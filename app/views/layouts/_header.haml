@@ -1,0 +1,16 @@
+%header
+  %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    %a.navbar-brand{href: "#{root_path}"}
+      Task-Manager
+    %button.navbar-toggler{ type: 'button', 'data-toggle': 'collapse', 'data-target': '#navbarNavAltMarkup',
+                            'aria-controls': 'navbarNavAltMarkup', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation'}
+      %span.navbar-toggler-icon
+    .collapse.navbar-collapse{id: 'navbarNavAltMarkup' }
+      - #mr-autoで左寄せ、ml-autoで右寄せ
+      %ul.navbar-nav.ml-auto
+        %li.nav-item
+          = link_to 'サインアップ', new_user_registration_path, class: 'nav-link'
+        %li.nav-item
+          = link_to 'ログイン', new_user_session_path, class: 'nav-link'
+        %li.nav-item
+          = link_to 'ログアウト', destroy_user_session_path, class: 'nav-link'

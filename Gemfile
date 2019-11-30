@@ -16,13 +16,13 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 # user関連処理
-# gem 'devise'
-# gem 'cancancan'
-# gem 'rails_admin'
+gem 'devise'
+gem 'cancancan'
+gem 'rails_admin'
 
 # bootstrap
-# gem 'bootstrap', '~> 4.1.1'
-# gem 'jquery-rails'
+gem 'bootstrap', '~> 4.1.1'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'pry-rails'
