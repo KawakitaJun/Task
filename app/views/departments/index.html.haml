@@ -1,0 +1,49 @@
+部署一覧
+
+%table
+  %thead
+    %tr
+      %th 部署名
+
+  %tbody
+    - @departments.each do |department|
+      %tr
+        = form_for(department) do |f|
+          - if department.errors.any?
+            #error_explanation
+              %h2
+                = pluralize(department.errors.count, "error")
+                prohibited this user from being saved:
+
+            %ul
+              - department.errors.full_messages.each do |message|
+                %li 
+                  = message
+          %td.field
+            = f.text_field :name
+          %td
+            = f.submit '変更'
+          %td
+            = link_to '削除', department, method: :delete, data: { confirm: '削除しますか?' }
+    %tr
+      = form_for(@new_department) do |f|
+        - if @new_department.errors.any?
+          #error_explanation
+            %h2
+              = pluralize(department.errors.count, "error")
+              prohibited this user from being saved:
+
+          %ul
+            - department.errors.full_messages.each do |message|
+              %li 
+                = message
+
+        %td.field
+          = f.text_field :name
+          = f.hidden_field :id
+        %td.actions
+          = f.submit '作成'
+
+%section.flash-area
+  -flash. each do |key, value|
+    = content_tag(:div, value, class: "#key")
