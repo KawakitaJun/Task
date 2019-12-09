@@ -1,0 +1,73 @@
+アカウント一覧
+
+%table
+  %thead
+    %tr
+      %th ID
+      %th 名前
+      %th メールアドレス
+      %th 部署
+      %th 閲覧権限
+      %th パスワード
+
+  %tbody
+    - @users.each do |users|
+      %tr
+        = form_for(users, url: account_management_path(users.id)) do |f|
+          - if users.errors.any?
+            #error_explanation
+              %h2
+                = pluralize(users.errors.count, "error")
+                prohibited this user from being saved:
+
+            %ul
+              - users.errors.full_messages.each do |message|
+                %li 
+                  = message
+          %td.field
+            = users.id
+          %td.field
+            = f.text_field :name
+          %td.field
+            = f.text_field :email
+          %td.field
+            = f.text_field :department_id
+          %td.field
+            = f.check_box :authority, {}, true, false
+          %td
+            = '***'
+          %td
+            = f.submit '変更'
+          %td
+            = link_to '削除', account_management_path(users.id), method: :delete, data: { confirm: '削除しますか?' }
+    %tr
+      = form_for(@new_user, url: account_managements_path(@new_user)) do |f|
+        - if @new_user.errors.any?
+          #error_explanation
+            %h2
+              = pluralize(user.errors.count, "error")
+              prohibited this user from being saved:
+
+          %ul
+            - user.errors.full_messages.each do |message|
+              %li 
+                = message
+
+        %td.field
+          -
+        %td.field
+          = f.text_field :name
+        %td.field
+          = f.email_field :email
+        %td.field
+          = f.text_field :department_id
+        %td.field
+          = f.check_box :authority, {}, true, false
+        %td.field
+          = f.password_field :password
+        %td.actions
+          = f.submit '作成'
+
+%section.flash-area
+  -flash. each do |key, value|
+    = content_tag(:div, value, class: "#key")

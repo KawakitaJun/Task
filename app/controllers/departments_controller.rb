@@ -18,7 +18,7 @@ class DepartmentsController < ApplicationController
   end
 
   def destroy
-    department = Department.find_by(params[:id])
+    department = Department.find(params[:id])
     if department.destroy
       flash = {success: '部署が削除されました。'}
     else
@@ -31,7 +31,7 @@ class DepartmentsController < ApplicationController
   end
 
   def update
-    department = Department.find_by(params[:id])
+    department = Department.find(params[:id])
     if department.update(department_param)
       flash = {success: '部署名が更新されました。'}
     else
@@ -42,6 +42,6 @@ class DepartmentsController < ApplicationController
 
 
   def department_param
-    params.require(:department).permit(:id, :name)
+    params.require(:department).permit(:name)
   end
 end
