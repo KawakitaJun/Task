@@ -31,11 +31,11 @@
           %td.field
             = f.text_field :email
           %td.field
-            = f.text_field :department_id
+            = f.collection_select :department_id, Department.all, :id, :name
           %td.field
             = f.check_box :authority, {}, true, false
           %td
-            = '***'
+            = '---'
           %td
             = f.submit '変更'
           %td
@@ -60,7 +60,7 @@
         %td.field
           = f.email_field :email
         %td.field
-          = f.text_field :department_id
+          = f.collection_select :department_id, Department.all, :id, :name
         %td.field
           = f.check_box :authority, {}, true, false
         %td.field
