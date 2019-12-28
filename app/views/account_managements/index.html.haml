@@ -11,21 +11,21 @@
       %th パスワード
 
   %tbody
-    - @users.each do |users|
+    - @users.each do |user|
       %tr
-        = form_for(users, url: account_management_path(users.id)) do |f|
-          - if users.errors.any?
+        = form_for(user, url: account_management_path(user.id)) do |f|
+          - if user.errors.any?
             #error_explanation
               %h2
-                = pluralize(users.errors.count, "error")
+                = pluralize(user.errors.count, "error")
                 prohibited this user from being saved:
 
             %ul
-              - users.errors.full_messages.each do |message|
+              - user.errors.full_messages.each do |message|
                 %li 
                   = message
           %td.field
-            = users.id
+            = user.id
           %td.field
             = f.text_field :name
           %td.field
@@ -39,7 +39,7 @@
           %td
             = f.submit '変更'
           %td
-            = link_to '削除', account_management_path(users.id), method: :delete, data: { confirm: '削除しますか?' }
+            = link_to '削除', account_management_path(user.id), method: :delete, data: { confirm: '削除しますか?' }
     %tr
       = form_for(@new_user, url: account_managements_path(@new_user)) do |f|
         - if @new_user.errors.any?
