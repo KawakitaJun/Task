@@ -15,6 +15,13 @@ class AccountManagementsController < ApplicationController
   end
 
   def destroy
+    user = User.find(params[:id])
+    if user.destroy
+      flash = {success: 'ユーザーが削除されました。'}
+    else
+      flash = {error: '削除に失敗しました。'}
+    end
+    redirect_to request.referer, flash: flash
   end
 
   def update

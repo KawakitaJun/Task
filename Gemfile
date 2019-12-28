@@ -15,6 +15,7 @@ gem 'erb2haml'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem "paranoia", "~> 2.2"
+gem 'ransack'
 
 # user関連処理
 gem 'devise'
