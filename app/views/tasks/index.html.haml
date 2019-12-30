@@ -64,6 +64,8 @@
             = f.submit '変更'
           %td
             = link_to '削除', task_path(result.id), method: :delete, data: { confirm: '削除しますか?' }
+          %td
+            = link_to '詳細',  edit_taskdetail_path(result.id)
     %tr
       = form_for(@new_task) do |f|
         - if @new_task.errors.any?
