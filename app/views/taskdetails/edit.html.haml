@@ -1,21 +1,55 @@
-タスク詳細
+.section-header
+  %a{ href: tasks_path }
+    %h3 タスク管理
+  .section-header-breadcrumb
+    .breadcrumb-item.active
+      %a タスク管理
+    .breadcrumb-item
+      %a{ href: categories_path}カテゴリー登録
+    .breadcrumb-item
+      %a{ href: edit_user_registration_path}アカウント設定
 
-= form_for(@task, url: taskdetail_path) do |f|
-  タスク名：
-  = f.text_field :name
-  カテゴリー：
-  = f.collection_select :category_id, current_user.categories.all, :id, :name
-  依頼元：
-  = f.collection_select :client_id, current_user.clients.all, :id, :name
-  期限：
-  = f.date_select :duedate
-  状態：
-  = f.collection_select :status_id, Status.all, :id, :name
-  担当：
-  =@task.user.name
-  詳細：
-  = f.text_area :content, :size =>"60x10" 
-  = f.submit '保存'
+.card
+  %h4 タスク詳細
+  = form_for(@task, url: taskdetail_path) do |f|
+    -if @task.user_id == current_user.id
+      .taskdetails
+        %h6.first-taskdetail タスク名：
+        = f.text_field :name, class: 'form-control col-1 taskform'
+        %h6 カテゴリー：
+        = f.collection_select :category_id, current_user.categories.all, :id, :name, {}, class: 'form-control col-1 taskform'
+        %h6 依頼元：
+        = f.collection_select :client_id, current_user.clients.all, :id, :name, {}, class: 'form-control col-1 taskform'
+        %h6 期限：
+        .dateselect
+          = f.date_select :duedate, {}, class: 'form-control taskform'
+        %h6 状態：
+        = f.collection_select :status_id, Status.all, :id, :name, {}, class: 'form-control col-1 taskform'
+        %h6 担当：
+        =@task.user.name
+      %h5 詳細：
+      = f.text_area :content, :size =>"60x10" 
+      = f.submit '保存', class: 'btn btn-outline-primary btn-sm py-0'
+      = link_to '一覧へ戻る', tasks_path, class: 'btn btn-outline-secondary btn-sm py-0'
+    -else
+      .taskdetails
+        %h6.first-taskdetail タスク名：
+        = @task.name
+        %h6 カテゴリー：
+        = @task.category.name
+        %h6 依頼元：
+        = @task.client.name
+        %h6 期限：
+        = @task.duedate
+        %h6 状態：
+        = @task.status.name
+        %h6 担当：
+        =@task.user.name
+      .taskdetails
+        %h6.first-taskdetail 詳細：
+        = @task.content
+      %br/
+      = link_to '一覧へ戻る', tasks_path, class: 'btn btn-outline-secondary btn-sm py-0'
 
 %section.flash-area
   -flash. each do |key, value|

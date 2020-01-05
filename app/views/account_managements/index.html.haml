@@ -1,72 +1,94 @@
-アカウント一覧
+.section-header
+  %a{ href: account_managements_path }
+    %h3 アカウント管理
+  .section-header-breadcrumb
+    .breadcrumb-item
+      %a{ href: departments_path }部署管理
+    .breadcrumb-item.active
+      %a アカウント管理
+    .breadcrumb-item
+      %a{ href: edit_user_registration_path}アカウント設定
 
-%table
-  %thead
-    %tr
-      %th ID
-      %th 名前
-      %th メールアドレス
-      %th 部署
-      %th 閲覧権限
-      %th パスワード
+.card
+  %h4 アカウント一覧
+  = search_form_for(@q, url: account_managements_path) do |f| 
+    %table.table.table-striped.table-hover.table-sm.table-bordered
+      %thead.text-center
+        %tr.d-flex
+          %th.col-1
+            =sort_link(@q, :id, "ID")
+          %th.col-2
+            =sort_link(@q, :name, "名前")
+          %th.col-2
+            =sort_link(@q, :email, "ﾒｰﾙｱﾄﾞﾚｽ")
+          %th.col-1
+            =sort_link(@q, :department_name, "部署")
+          %th.col-1
+            =sort_link(@q, :authority, "閲覧権限")
+          %th.col-3
+            = "パスワード"
+          %th.col-1
+            = "変更/作成"
+          %th.col-1
+            = "削除"
 
-  %tbody
-    - @users.each do |user|
-      %tr
-        = form_for(user, url: account_management_path(user.id)) do |f|
-          - if user.errors.any?
-            #error_explanation
-              %h2
-                = pluralize(user.errors.count, "error")
-                prohibited this user from being saved:
+      %tbody
+        - @results.each do |result|
+          %tr.d-flex
+            = form_for(result, url: account_management_path(result.id)) do |f|
+              - if result.errors.any?
+                #error_explanation
+                  %h2
+                    = pluralize(result.errors.count, "error")
+                    prohibited this user from being saved:
 
-            %ul
-              - user.errors.full_messages.each do |message|
-                %li 
-                  = message
-          %td.field
-            = user.id
-          %td.field
-            = f.text_field :name
-          %td.field
-            = f.text_field :email
-          %td.field
-            = f.collection_select :department_id, Department.all, :id, :name
-          %td.field
-            = f.check_box :authority, {}, true, false
-          %td
-            = '---'
-          %td
-            = f.submit '変更'
-          %td
-            = link_to '削除', account_management_path(user.id), method: :delete, data: { confirm: '削除しますか?' }
-    %tr
-      = form_for(@new_user, url: account_managements_path(@new_user)) do |f|
-        - if @new_user.errors.any?
-          #error_explanation
-            %h2
-              = pluralize(user.errors.count, "error")
-              prohibited this user from being saved:
+                %ul
+                  - result.errors.full_messages.each do |message|
+                    %li 
+                      = message
+              %td.col-1
+                = result.id
+              %td.col-2
+                = f.text_field :name, class: 'form-control col-12 taskform'
+              %td.col-2
+                = f.text_field :email, class: 'form-control col-12 taskform'
+              %td.col-1
+                = f.collection_select :department_id, Department.all, :id, :name, {}, class: 'form-control col-12 taskform'
+              %td.col-1
+                = f.check_box :authority, {}, :as => :boolean
+              %td.col-3
+                = '---'
+              %td.col-1
+                = f.submit '変更', class: 'btn btn-outline-secondary btn-sm btn-block py-0'
+              %td.col-1
+                = link_to '削除', account_management_path(result.id), method: :delete, data: { confirm: '削除しますか?' }, class: 'btn btn-outline-secondary btn-sm btn-block py-0'
+        %tr.d-flex
+          = form_for(@new_user, url: account_managements_path(@new_user)) do |f|
+            - if @new_user.errors.any?
+              #error_explanation
+                %h2
+                  = pluralize(@new_user.errors.count, "error")
+                  prohibited this user from being saved:
 
-          %ul
-            - user.errors.full_messages.each do |message|
-              %li 
-                = message
+              %ul
+                - @new_user.errors.full_messages.each do |message|
+                  %li 
+                    = message
 
-        %td.field
-          -
-        %td.field
-          = f.text_field :name
-        %td.field
-          = f.email_field :email
-        %td.field
-          = f.collection_select :department_id, Department.all, :id, :name
-        %td.field
-          = f.check_box :authority, {}, true, false
-        %td.field
-          = f.password_field :password
-        %td.actions
-          = f.submit '作成'
+            %td.col-1
+              -
+            %td.col-2
+              = f.text_field :name, class: 'form-control col-12 taskform'
+            %td.col-2
+              = f.email_field :email, class: 'form-control col-12 taskform'
+            %td.col-1
+              = f.collection_select :department_id, Department.all, :id, :name, {}, class: 'form-control col-12 taskform'
+            %td.col-1
+              = f.check_box :authority, {}, "true", "false"
+            %td.col-3
+              = f.password_field :password, class: 'form-control col-12 taskform'
+            %td.col-1
+              = f.submit '作成', class: 'btn btn-outline-primary btn-sm btn-block py-0'
 
 %section.flash-area
   -flash. each do |key, value|

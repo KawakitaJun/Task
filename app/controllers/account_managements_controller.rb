@@ -2,6 +2,8 @@ class AccountManagementsController < ApplicationController
   def index
     @users = User.all
     @new_user = User.new
+    @q = User.ransack(params[:q])
+    @results = @q.result(distinct: true)
   end
 
   def create
@@ -35,6 +37,6 @@ class AccountManagementsController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :department_id, :authoriy, :password)
+    params.require(:user).permit(:name, :email, :department_id, :authority, :password)
   end
 end
