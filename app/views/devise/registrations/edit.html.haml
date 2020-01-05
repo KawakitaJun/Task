@@ -1,40 +1,54 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.text_field :name
-  .field
-    = f.hidden_field :department_id
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      Currently waiting confirmation for: #{resource.unconfirmed_email}
-  .field
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-    - if @minimum_password_length
+- if current_user.admin?
+  .section-header
+    %h3 アカウント設定
+    .section-header-breadcrumb
+      .breadcrumb-item
+        %a{ href: departments_path }部署管理
+      .breadcrumb-item
+        %a{ href: account_managements_path}アカウント管理
+      .breadcrumb-item.active
+        %a アカウント設定
+- else
+  .section-header
+    %h3 アカウント設定
+    .section-header-breadcrumb
+      .breadcrumb-item
+        %a{ href: tasks_path }タスク管理
+      .breadcrumb-item
+        %a{ href: categories_path}カテゴリー登録
+      .breadcrumb-item.active
+        %a アカウント設定
+
+.card
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .field
+      %h5 名前
+      = f.text_field :name, class: 'form-control col-2'
+    .field
+      = f.hidden_field :department_id
+    .field
+      %h5 メールアドレス
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control col-3'
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      %div
+        Currently waiting confirmation for: #{resource.unconfirmed_email}
+    .field
+      %h5 新パスワード
+      %i (パスワードを変更しない場合は空欄のままにしてください。)
       %br/
-      %em
-        = @minimum_password_length
-        characters minimum
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password, autocomplete: "current-password"
-  .actions
-    = f.submit "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+      = f.password_field :password, autocomplete: "new-passwaord", class: 'form-control col-2'
+      - if @minimum_password_length
+        %br/
+        %em
+          = "最低#{@minimum_password_length}文字以上"
+          
+    .field
+      %h5 新パスワード（確認）
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control col-2'
+    .field
+      %h5 現在のパスワード
+      = f.password_field :current_password, autocomplete: "current-password", class: 'form-control col-2'
+    .actions
+      = f.submit "変更", class: 'btn btn-outline-primary'
+    .actions #{button_to "退会", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-outline-secondary'}

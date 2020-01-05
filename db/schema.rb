@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191230072720) do
+ActiveRecord::Schema.define(version: 20200104065413) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC" do |t|
     t.bigint "user_id"
@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(version: 20191230072720) do
     t.string "email", default: "", null: false
     t.string "name"
     t.bigint "department_id"
-    t.boolean "authority"
-    t.boolean "admin"
+    t.boolean "authority", default: false, null: false
+    t.boolean "admin", default: false, null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

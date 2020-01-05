@@ -1,50 +1,60 @@
-依頼元
--unless @clients.nil?
-  = form_for(@clients, url: clients_path, method: 'delete') do |f|
-    = f.collection_select :id, current_user.clients.all, :id, :name
-    = f.submit '削除', data: { confirm: '削除しますか?' }
+.section-header
+  %h3 カテゴリー登録
+  .section-header-breadcrumb
+    .breadcrumb-item
+      %a{ href: tasks_path }タスク管理
+    .breadcrumb-item.active
+      %a カテゴリー登録
+    .breadcrumb-item
+      %a{ href: edit_user_registration_path}アカウント設定
 
-= form_for(@new_client, url:  clients_path) do |f|
-  - if @new_client.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@new_client.errors.count, "error")
-        prohibited this user from being saved:
+.card
+  %h4 依頼元
+  -unless @clients.nil?
+    = form_for(@clients, url: clients_path, method: 'delete') do |f|
+      = f.collection_select :id, current_user.clients.all, :id, :name, {}, class: 'form-control col-2'
+      = f.submit '削除', data: { confirm: '削除しますか?' }, class: 'btn btn-outline-primary btn-sm py-1'
 
-    %ul
-      - @new_client.errors.full_messages.each do |message|
-        %li 
-          = message
+  = form_for(@new_client, url:  clients_path) do |f|
+    - if @new_client.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@new_client.errors.count, "error")
+          prohibited this user from being saved:
 
-  .field
-    = f.hidden_field :user_id, value: current_user.id
-    = f.text_field :name
-  .actions
-    = f.submit '作成'
+      %ul
+        - @new_client.errors.full_messages.each do |message|
+          %li 
+            = message
 
-カテゴリー
--unless @categories.nil?
-  = form_for(@categories, url: categories_path, method: 'delete') do |f|
-    = f.collection_select :id, current_user.categories.all, :id, :name
-    = f.submit '削除', data: { confirm: '削除しますか?' }
+    .field#newcategory
+      = f.hidden_field :user_id, value: current_user.id
+      = f.text_field :name, class: 'form-control col-2'
+      = f.submit '作成', class: 'btn btn-outline-primary btn-sm py-1'
 
-= form_for(@new_category) do |f|
-  - if @new_category.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@new_category.errors.count, "error")
-        prohibited this user from being saved:
+.card
+  %h4 カテゴリー
+  -unless @categories.nil?
+    = form_for(@categories, url: categories_path, method: 'delete') do |f|
+      = f.collection_select :id, current_user.categories.all, :id, :name, {}, class: 'form-control col-2'
+      = f.submit '削除', data: { confirm: '削除しますか?' }, class: 'btn btn-outline-primary btn-sm py-1'
 
-    %ul
-      - @new_category.errors.full_messages.each do |message|
-        %li 
-          = message
+  = form_for(@new_category) do |f|
+    - if @new_category.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@new_category.errors.count, "error")
+          prohibited this user from being saved:
 
-  .field
-    = f.hidden_field :user_id, value: current_user.id
-    = f.text_field :name
-  .actions
-    = f.submit '作成'
+      %ul
+        - @new_category.errors.full_messages.each do |message|
+          %li 
+            = message
+
+    .field#newcategory
+      = f.hidden_field :user_id, value: current_user.id
+      = f.text_field :name, class: 'form-control col-2'
+      = f.submit '作成', class: 'btn btn-outline-primary btn-sm py-1'
 
 %section.flash-area
   -flash. each do |key, value|

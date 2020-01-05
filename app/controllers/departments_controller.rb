@@ -2,6 +2,8 @@ class DepartmentsController < ApplicationController
   def index
     @departments = Department.all
     @new_department = Department.new
+    @q = Department.ransack(params[:q])
+    @results = @q.result(distinct: true)
   end
 
   def create

@@ -1,27 +1,27 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :name, '名前'
-    %br/
-    = f.text_field :name
-  .field
-    = f.hidden_field :department_id
-  .field
-    = f.label :email, 'メールアドレス'
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password, 'パスワード'
+.section-header
+  %h3 サインアップ 
+
+.card
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .field
+      %h5 名前
+      = f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control col-2'
+    .field
+      = f.hidden_field :department_id
+    .field
+      %h5 メールアドレス
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control col-3'
+    .field
+      %h5 パスワード
     - if @minimum_password_length
       %em
         (最低#{@minimum_password_length}文字以上)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation, 'パスワード（確認用）'
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+      = f.password_field :password, autocomplete: "new-password", class: 'form-control col-2'
+    .field
+      %h5 パスワード（確認用）
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control col-2'
+    .actions
+      = f.submit "サインアップ", class: 'btn btn-outline-primary'
+    .actions
+      = render "devise/shared/links"
