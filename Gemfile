@@ -30,6 +30,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-doc'
+  gem 'sqlite3'
 end
 
 group :development do
@@ -40,3 +41,9 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# sqlite3
+
+group :production do
+  gem 'pg'
+end
