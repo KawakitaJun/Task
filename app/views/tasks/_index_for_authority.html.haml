@@ -62,9 +62,9 @@
               %td.name-field
                 = f.text_field :name, class: 'form-control col-12 taskform'
               %td.category-select
-                = f.collection_select :category_id, Category.joins(user: :department).where(departments: {id: @current_department}).all, :id, :name, {}, class: 'form-control col-12 taskform'
+                = f.collection_select :category_id, current_user.categories.all, :id, :name, {}, class: 'form-control col-12 taskform'
               %td.client-select
-                = f.collection_select :client_id, Client.joins(user: :department).where(departments: {id: @current_department}).all, :id, :name, {}, class: 'form-control col-12 taskform'
+                = f.collection_select :client_id, current_user.clients.all, :id, :name, {}, class: 'form-control col-12 taskform'
               %td.date-select
                 = f.date_select :duedate, {}, class: 'form-control taskform'
               %td.status-select

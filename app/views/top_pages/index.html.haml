@@ -3,6 +3,8 @@
     %h1 入力スピード重視のやること管理ツール
     %p.top-page Task-Managerは仕事内容の入力簡素化に特化した仕事管理支援ツールです。
     %br
-    =link_to "ユーザー登録（無料）", new_user_registration_path, class: 'btn btn-outline-light btn-lg', id: 'top-page-btn'
+    - if user_signed_in?
+    - else
+      =link_to "ユーザー登録（無料）", new_user_registration_path, class: 'btn btn-outline-light btn-lg', id: 'top-page-btn'
   .top-page-screen
   .top-page-service

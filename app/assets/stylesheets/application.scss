@@ -27,25 +27,6 @@ body {
   color: #6c757d;
 }
 
-.top-page-background {
-  background-color: #007bff;
-  height: 100%;
-  width: 100%;
-  color: white;
-}
-
-.top-page-logo {
-  padding-top: 100px;
-}
-
-.top-page {
-  font-size: 20px;
-}
-
-#top-page-btn:hover{
-  color: #007bff;
-}
-
 .card {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
   background-color: #fff;
@@ -61,11 +42,6 @@ body {
 .table {
   width: 98%;
   margin: 0 auto;
-}
-
-table#department {
-  width: 50%;
-  margin: 0 0;
 }
 
 .section-header {
@@ -120,8 +96,28 @@ th {
   padding-bottom: 0;
 }
 
-.field#newcategory {
+label {
+  font-size: 15;
+  padding: 3 0;
+  margin: 0 5;
+}
+
+.task_search {
   display: flex;
+}
+
+select {
+  &#category_id {
+    height: 30px;
+  }
+  &#client_id {
+    height: 30px;
+  }
+}
+
+.taskform {
+  margin-right: 0;
+  height: 27px;
 }
 
 .edit_client {
@@ -132,23 +128,12 @@ th {
   display: flex;
 }
 
-label {
-  font-size: 15;
-  padding: 3 0;
-  margin: 0 5;
-}
-.task_search {
-  display: flex;
-}
-
 #searchbtn {
   margin: 0 3;
 }
 
-.form-control {
-  background-color: #fff;
-  border-color: #007bff;
-  margin-right: 3px;
+.btn-1 {
+  width: 5%;
 }
 
 .date-select {
@@ -166,33 +151,10 @@ label {
   }
 }
 
-.taskform {
-  margin-right: 0;
-  height: 27px;
-}
-
-select {
-  &#category_id {
-    height: 30px;
-  }
-  &#client_id {
-    height: 30px;
-  }
-}
-
-h6 {
-  color: #007bff;
-  font-size: 14px;
-  height: 21px;
-  line-height: 1.5;
-  margin-left: 20px;
-  &.first-taskdetail {
-    margin-left: 0;
-  }
-}
-
-.taskdetails {
-  display: flex;
+.form-control {
+  background-color: #fff;
+  border-color: #007bff;
+  margin-right: 3px;
 }
 
 .name-field {
@@ -217,6 +179,13 @@ h6 {
   width: 5%;
 }
 
-.btn-1 {
-  width: 5%;
+h6 {
+  color: #007bff;
+  font-size: 14px;
+  height: 21px;
+  line-height: 1.5;
+  margin-left: 20px;
+  &.first-taskdetail {
+    margin-left: 0;
+  }
 }
