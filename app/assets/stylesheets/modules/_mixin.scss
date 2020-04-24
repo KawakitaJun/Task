@@ -1,0 +1,86 @@
+/* 高さ幅指定 */
+@mixin height_width($height, $width){
+  height: $height;
+  width: $width;
+}
+
+/* ヘッダー用位置調整 */
+@mixin text_size_height($size, $height){
+  font-size: $size;
+  a {
+    line-height: $height;
+  }
+}
+
+/* プルダウン設定 */
+@mixin pull_down($width) {
+  width: $width;
+  position: relative;
+  z-index: 2;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  font-size: 14px;
+  line-height: 30px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  &:focus{
+    outline: none;
+    border: 1px solid #4ba53a;
+  }
+}
+
+/* ボタン設定 */
+@mixin btn-set($width, $height) {
+  width: $width;
+  height: $height;
+  line-height: $height;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* タグ設定 */
+@mixin tag-set($width, $height) {
+  width: $width;
+  height: $height;
+  line-height: $height;
+  text-align: center;
+}
+
+/* 画面上下左右中心設定 */
+@mixin screen-center($top, $right, $bottom, $left){
+  position: fixed;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  margin: auto;
+}
+
+/* タグの背景設定 */
+@mixin already-read-tag($width){
+  border-top: $width solid #4ca53ad7;
+  border-right: $width solid #4ca53ad7;
+  border-bottom: $width solid transparent;
+  border-left: $width solid transparent;
+}
+
+/* タグの背景設定 */
+@mixin already-read-title($px){
+  font-size: $px;
+  transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+/* 幅に合わないテキスト設定 */
+@mixin long-text-set{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

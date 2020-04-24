@@ -1,0 +1,24 @@
+.header{
+  
+  &__box{
+    @include height_width(60px, 100vw);
+    display: flex;
+    
+    &__logo{
+      @include text_size_height(30px, 60px);
+      margin-left: 100px;
+    }
+
+    &__content{
+      width: 300px;
+      margin-right: 100px;
+      justify-content: space-around;
+
+      &__text{
+        @include text_size_height(20px, 60px);
+        display: inline-block;
+        position: relative;
+      }
+    }
+  }
+}

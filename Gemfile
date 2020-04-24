@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 2.5'
 gem "paranoia", "~> 2.2"
 gem 'ransack'
 gem 'mysql2', '>= 0.3.18', '< 0.6.0'
+gem "font-awesome-sass"
 
 # user関連処理
 gem 'devise'

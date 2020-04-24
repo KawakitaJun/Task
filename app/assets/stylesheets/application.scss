@@ -12,11 +12,24 @@
  *
  */
 
- // pages
-@import 'top_pages';
+ //reset
+ @import "reset";
 
-// gem
+ // gem
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+ // pages
+@import "modules/mixin";
+@import "modules/variable";
+@import "modules/common";
+@import "header";
+@import "footer";
+@import "top_pages";
+@import "top-page/top-page_index";
+
+
 
 body {
   margin: 0;

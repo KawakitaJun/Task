@@ -1,10 +1,17 @@
-.top-page-background
-  .top-page-logo.text-center
-    %h1 入力スピード重視のやること管理ツール
-    %p.top-page Task-Managerは仕事内容の入力簡素化に特化した仕事管理支援ツールです。
-    %br
-    - if user_signed_in?
-    - else
-      =link_to "ユーザー登録（無料）", new_user_registration_path, class: 'btn btn-outline-light btn-lg', id: 'top-page-btn'
-  .top-page-screen
-  .top-page-service
+.top-page.main-font
+  .top-page__main
+    .top-page__main__box
+      .top-page__main__box__title.text-white
+        Task-Manager をはじめよう
+      .top-page__main__box__text.text-white
+        入力スピード重視の仕事管理ツールです。
+      .top-page__main__box__text.text-white
+        小さな仕事も、こまめに記録することで忘れないようになります。
+      .top-page__main__box__start
+        - if user_signed_in?
+        - else
+          = link_to new_user_registration_path, class: "text-white text-line-none start-btn" do
+            新規会員登録
+        .text-white.text-line-none.start-btn.use-btn
+          Appの使い方
+      
