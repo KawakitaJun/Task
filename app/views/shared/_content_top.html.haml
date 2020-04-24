@@ -1,0 +1,7 @@
+- if params[:controller] == "users/sessions" && params[:action] == "new" || params[:controller] == "users/sessions" && params[:action] == "create"
+  .content-top
+    .content-top__title.content-title.text-blue
+      = icon 'fas', 'sign-in-alt', class: 'icon-sign-in'
+      ログイン
+      = render "shared/easy_login_btn"
+- else
