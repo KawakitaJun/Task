@@ -24,7 +24,7 @@ gem 'cancancan'
 gem 'rails_admin'
 
 # bootstrap
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 
 group :development, :test do
