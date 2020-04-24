@@ -1,0 +1,29 @@
+.top-page{
+  width: 100vw;
+  height: 100vh;
+  &__main{
+    width: 100vw;
+    height: 100vh;
+    background:linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 20%, rgba(0, 123, 255, 0.8) 50%),url('/top_page_image_01.jpg');
+    background-size: 1440px 800px;
+    &__box{
+      margin-top: 150px;
+      margin-right: 150px;
+      float: right;
+      &__title{
+        font-size: 35px;
+        margin-bottom: 30px;
+      }
+      &__text{
+        font-size: 16px;
+        margin-top: 5px;
+      }
+      &__start{
+        margin-top: 50px;
+        .use-btn{
+          margin-left: 30px;
+        }
+      }
+    }
+  }
+}

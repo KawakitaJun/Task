@@ -1,24 +1,34 @@
-%header
-  %nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
-    %a.navbar-brand{href: "#{root_path}"}
-      %h2 Task-Manager
-    %button.navbar-toggler{ type: 'button', 'data-toggle': 'collapse', 'data-target': '#navbarNavAltMarkup',
-                            'aria-controls': 'navbarNavAltMarkup', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation'}
-      %span.navbar-toggler-icon
-    .collapse.navbar-collapse{id: 'navbarNavAltMarkup' }
-      - #mr-autoで左寄せ、ml-autoで右寄せ
-      %ul.navbar-nav.ml-auto
-        - if user_signed_in?
-          %li.nav-item
-            = link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', method: :delete
-          - if current_user.admin? 
-            %li.nav-item
-              = link_to "マイページ", departments_path, class: 'nav-link'
-          - else
-            %li.nav-item
-              = link_to "マイページ", tasks_path, class: 'nav-link'
+%header.header.main-font
+  .header__box.background-blue
+    .header__box__logo.box-left
+      = link_to root_path, class: 'header-logo  font-bold text-white1', data: {"turbolinks" => false} do
+        Task-Manager
+    %ul.header__box__content.box-right.display-flex
+      - if user_signed_in?
+        - if current_user.admin? 
+          %li.header__box__content__text
+            = link_to destroy_user_session_path, method: :delete, class: 'header-text text-white1' do
+              = icon 'fas', 'sign-out-alt'
+              ログアウト
+          %li.header__box__content__text
+            = link_to departments_path, class: 'header-text text-white1' do
+              = icon 'fas', 'user'
+              マイページ
         - else
-          %li.nav-item
-            = link_to 'サインアップ', new_user_registration_path, id: 'signup-link', class: 'nav-link'
-          %li.nav-item
-            = link_to 'ログイン', new_user_session_path, id: 'login-link', class: 'nav-link'
+          %li.header__box__content__text
+            = link_to destroy_user_session_path, method: :delete, class: 'header-text text-white1' do
+              = icon 'fas', 'sign-out-alt'
+              ログアウト
+          %li.header__box__content__text
+            = link_to tasks_path, class: 'header-text text-white1' do
+              = icon 'fas', 'user'
+              マイページ
+      - else
+        %li.header__box__content__text
+          = link_to new_user_registration_path, class: 'header-text text-white1' do
+            = icon 'fas', 'user-plus'
+            新規登録
+        %li.header__box__content__text
+          = link_to new_user_session_path, class: 'header-text text-white1' do
+            = icon 'fas', 'sign-in-alt'
+            ログイン
