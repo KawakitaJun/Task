@@ -1,40 +1,19 @@
 .login-new.main-font
-  .login-new__main.box-center
+  .login-new__main.box-center.background-white
     = render "shared/content_top"
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .user-detail
-        .user-detail__top.form-content
+        .user-detail__top.form-content.text-blue
           メールアドレス
         .user-detail__email-input
           = f.email_field :email, placeholder: "> email", class:"text-input"
-        .user-detail__top.form-content
+        .user-detail__top.form-content.text-blue
           パスワード
         .user-detail__password-input
           = f.password_field :password, placeholder: "> password", class:"text-input"
       .btn-box.display-flex
-        .btn-box__user-new
+        .btn-box__user-new.box-center
           = f.submit " ログイン ", class: "submit-btn text-line-none"
-        .btn-box__back
-          = link_to :back, class: "gray-btn margin-left-40 text-line-none" do
-            もどる
-
-
-.section-header
-  %h3 ログイン
-
-.card
-  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    .field
-      %h5 メールアドレス
-      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control col-2'
-    .field
-      %h5 パスワード
-      = f.password_field :password, autocomplete: "current-password", class: 'form-control col-3'
-    - if devise_mapping.rememberable?
-      .field
-        = f.check_box :remember_me
-        = f.label :remember_me, "パスワードを記憶する"
-    .actions
-      = f.submit "ログイン", class: 'btn btn-outline-primary'
-    .actions
-      = render "devise/shared/links"
+        .btn-box__back.box-center
+          = link_to new_user_registration_path, class: "blue-white-btn" do
+            新規登録

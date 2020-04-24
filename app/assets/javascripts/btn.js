@@ -20,14 +20,31 @@ $(function(){
     function(){
       $(this).animate(
         {
-          'width': '210px'
+          'width': '120px'
         },150
       )
     },
     function(){
       $(this).animate(
         {
-          'width': '180px'
+          'width': '100px'
+        },150
+      )
+    }
+  );
+
+  $('.blue-white-btn').hover(
+    function(){
+      $(this).animate(
+        {
+          'width': '120px'
+        },150
+      )
+    },
+    function(){
+      $(this).animate(
+        {
+          'width': '100px'
         },150
       )
     }

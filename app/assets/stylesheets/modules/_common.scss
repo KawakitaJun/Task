@@ -128,7 +128,7 @@ a, a:visited, a:focus, a:hover {
   border-top:none;
   &:focus{
     outline: none;
-    border-bottom: 1px solid #4ba53a;
+    border-bottom: 1px solid #007bff;
   }
 }
 
@@ -181,7 +181,7 @@ a, a:visited, a:focus, a:hover {
 
 /* 送信ボタン */
 .submit-btn{
-  @include btn-set(180px, 44px);
+  @include btn-set(100px, 44px);
   color: #fff;
   background-color: #007bff;
   font-size: 14px;
@@ -189,7 +189,7 @@ a, a:visited, a:focus, a:hover {
 
 /* 簡単ログインボタン */
 .easy-login-btn{
-  @include btn-set(120px, 30px);
+  @include btn-set(180px, 30px);
   color: #d30000;
   border: 1px solid #d30000;
   background-color: #fff;
@@ -221,6 +221,16 @@ a, a:visited, a:focus, a:hover {
   color: #333333;
   background-color: #ccc;
   font-size: 14px;
+}
+
+/* 白抜き青色リンクボタン */
+.blue-white-btn{
+  @include btn-set(100px, 44px);
+  display: inline-block;
+  color: #007bff;
+  background-color: #fff;
+  font-size: 14px;
+  border: 1px solid #007bff;
 }
 
 /* 黒色リンクボタン */
@@ -295,9 +305,14 @@ a, a:visited, a:focus, a:hover {
 
 
 
-/* オレンジ色設定 */
+/* 青色設定 */
 .background-blue{
   background-color:#007bff;
+}
+
+/* 白色設定 */
+.background-white{
+  background-color: #fff;
 }
 
 /////////////////////////
