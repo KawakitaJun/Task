@@ -7,28 +7,28 @@
       - if user_signed_in?
         - if current_user.admin? 
           %li.header__box__content__text
-            = link_to destroy_user_session_path, method: :delete, class: 'header-text text-white1' do
+            = link_to destroy_user_session_path, method: :delete, class: 'header-text text-white1', data: {"turbolinks" => false} do
               = icon 'fas', 'sign-out-alt'
               ログアウト
           %li.header__box__content__text
-            = link_to departments_path, class: 'header-text text-white1' do
+            = link_to departments_path, class: 'header-text text-white1', data: {"turbolinks" => false} do
               = icon 'fas', 'user'
               マイページ
         - else
           %li.header__box__content__text
-            = link_to destroy_user_session_path, method: :delete, class: 'header-text text-white1' do
+            = link_to destroy_user_session_path, method: :delete, class: 'header-text text-white1', data: {"turbolinks" => false} do
               = icon 'fas', 'sign-out-alt'
               ログアウト
           %li.header__box__content__text
-            = link_to tasks_path, class: 'header-text text-white1' do
+            = link_to tasks_path, class: 'header-text text-white1', data: {"turbolinks" => false} do
               = icon 'fas', 'user'
               マイページ
       - else
         %li.header__box__content__text
-          = link_to new_user_registration_path, class: 'header-text text-white1' do
+          = link_to new_user_registration_path, class: 'header-text text-white1', data: {"turbolinks" => false} do
             = icon 'fas', 'user-plus'
             新規登録
         %li.header__box__content__text
-          = link_to new_user_session_path, class: 'header-text text-white1' do
+          = link_to new_user_session_path, class: 'header-text text-white1', data: {"turbolinks" => false} do
             = icon 'fas', 'sign-in-alt'
             ログイン

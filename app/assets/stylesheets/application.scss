@@ -24,10 +24,14 @@
 @import "modules/mixin";
 @import "modules/variable";
 @import "modules/common";
-@import "header";
-@import "footer";
-@import "top_pages";
+
+@import "shared/header";
+@import "shared/footer";
+@import "shared/content_top";
+
 @import "top-page/top-page_index";
+
+@import "login_logout_signup/login";
 
 
 
