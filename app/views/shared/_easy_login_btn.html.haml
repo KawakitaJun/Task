@@ -1,4 +1,23 @@
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  = f.email_field :email, value: "test01@test01.test01", type: "hidden"
-  = f.password_field :password, value: "test01", type: "hidden"
-  = f.submit " テストログインはこちら ", class: "easy-login-btn font-bold text-line-none"
+.easy-login
+  .easy-login__title.text-red
+    お好みのテストアカウントを選んでください。
+  .easy-login__btn.display-flex
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = f.email_field :email, value: "admin@admin", type: "hidden"
+      = f.password_field :password, value: "admin1", type: "hidden"
+      = f.submit " アドミン ", class: "easy-login-btn font-bold text-line-none"
+
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = f.email_field :email, value: "boss@boss", type: "hidden"
+      = f.password_field :password, value: "boss01", type: "hidden"
+      = f.submit " 上司 ", class: "easy-login-btn font-bold text-line-none"
+
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = f.email_field :email, value: "employee@e1", type: "hidden"
+      = f.password_field :password, value: "employee1", type: "hidden"
+      = f.submit " 部下1 ", class: "easy-login-btn font-bold text-line-none"
+
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = f.email_field :email, value: "employee@e2", type: "hidden"
+      = f.password_field :password, value: "employee2", type: "hidden"
+      = f.submit " 部下2 ", class: "easy-login-btn font-bold text-line-none"

@@ -29,3 +29,10 @@ module App
     config.generators.system_tests = nil
   end
 end
+
+module Dansyalist
+  class Application < Rails::Application
+    config.i18n.default_locale = :ja
+  end
+end
+

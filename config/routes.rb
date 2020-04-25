@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions',
     :registration => 'users/registrations'
   }
+  devise_scope :user do
+    get 'users' => 'devise/registrations#new', as: :new_user_registration_reload
+  end
+
   root to: 'top_pages#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

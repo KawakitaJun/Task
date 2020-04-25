@@ -4,4 +4,9 @@
       = icon 'fas', 'sign-in-alt', class: 'icon-sign-in'
       ログイン
     = render "shared/easy_login_btn"
+- elsif params[:controller] == "devise/registrations" && params[:action] == "new" || params[:controller] == "devise/registrations" && params[:action] == "create"
+  .content-top.content-title.text-blue.text-center
+    .content-top__title
+      = icon 'fas', 'user-plus', class: 'icon-sign-up'
+      新規会員登録
 - else
