@@ -154,6 +154,25 @@ $(function(){
     }
   );
 
+  $('.blue-link-btn').hover(
+    function(){
+      $(this).animate(
+        {
+          'width': '210px',
+          'color': 'white',
+        },150
+      )
+    },
+    function(){
+      $(this).animate(
+        {
+          'width': '180px',
+          'color': 'white',
+        },150
+      )
+    }
+  );
+
   $('.easy-login-btn').hover(
     function(){
       $(this).css(

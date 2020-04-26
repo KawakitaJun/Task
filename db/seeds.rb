@@ -185,6 +185,7 @@ Task.create!(
       category_id: 1,
       name: "経営戦略会議資料",
       duedate: "2020-06-01",
+      status: 1,
     },
 
     {
@@ -195,6 +196,7 @@ Task.create!(
       name: "事業実績データ分析",
       duedate: "2020-06-01",
       content: "直近3年分の事業実績データの業界別、取引先別、時期別の分析",
+      status: 1,
     },
   
     {
@@ -203,15 +205,17 @@ Task.create!(
       client_id: 4,
       category_id: 3,
       duedate: "2020-06-01",
+      status: 1,
     },
 
     {
       id: 4,
       user_id: 3,
       client_id: 4,
-      category_id: 3,
+      category_id: 4,
       name: "経費チェック",
       duedate: "2020-06-20",
+      status: 1,
     },
 
     {
@@ -222,6 +226,7 @@ Task.create!(
       name: "売買基本契約書法務確認",
       duedate: "2020-05-01",
       content: "第◯条、第◯条の変更確認",
+      status: 1,
     },
 
     {
@@ -231,6 +236,7 @@ Task.create!(
       category_id: 6,
       name: "4月末棚卸",
       duedate: "2020-05-01",
+      status: 1,
     },
   ]
 )

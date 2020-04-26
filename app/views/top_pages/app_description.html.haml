@@ -1,0 +1,54 @@
+.app-description-top.box-center.main-font
+  .app-description-top__main
+    .app-description-top__main__logo.text-center.font-bold.text-blue
+      = icon 'fas', 'question-circle', class: 'question-circle'
+      Task-Manager とは...
+    .app-description-top__main__box.text-center
+      .app-description-top__main__box__title.font-bold
+        Task-Manager は仕事・やることの管理アプリです。
+        %br
+        入力の簡易性を重視した設計のため、
+        %br
+        小さな仕事もこまめに記録することができ,
+        %br
+        やり忘れがなくなります。
+      .app-description-top__main__box__icon
+        = icon 'fas', 'angle-double-down', class: 'angle-double-down'
+      .app-description-top__main__box__content
+        依頼された仕事を種類(カテゴリー)・依頼元・期日と一緒に登録し、やるべき仕事を管理できます。
+      .app-description-top__main__box__image
+        = image_tag("/now_printing_01.png")
+      .app-description-top__main__box__content
+        カテゴリー・依頼元・期日はセレクトボックスから選べるため、手間がかからずに登録できます。
+      .app-description-top__main__box__image
+        = image_tag("/now_printing_01.png")
+      .app-description-top__main__box__content
+        カテゴリー・依頼元の選択肢はあらかじめ自分で登録できるので好きな様にカスタマイズできます。
+      .app-description-top__main__box__image#third
+        = image_tag("/now_printing_01.png")
+    .app-description-top__main__box.text-center.margin-top-160
+      .app-description-top__main__box__title.text-center.font-bold
+        閲覧権限の付与機能により、上司が部下の仕事量を把握し
+        %br
+        臨機応変な仕事の割り振りができるようになります。
+      .app-description-top__main__box__icon
+        = icon 'fas', 'angle-double-down', class: 'angle-double-down'
+      .app-description-top__main__box__content
+        adminアカウントからログインすることで、部署（グループ）の作成・閲覧権限の付与ができます。
+      .app-description-top__main__box__image
+        = image_tag("/now_printing_01.png")
+        = image_tag("/now_printing_01.png")
+      .app-description-top__main__box__content
+        閲覧権限が付与されたアカウントでログインすると、
+        %br
+        同じ部署（グループ）内の他のユーザーの仕事リストを閲覧することができます。
+      .app-description-top__main__box__image
+        = image_tag("/now_printing_01.png")
+    .app-description-top__main__box.text-center.margin-top-220
+      .app-description-top__main__box__title.text-center.font-bold
+        仕事管理にぜひご使用ください
+      .app-description-top__main__box__icon
+        = icon 'fas', 'angle-double-down', class: 'angle-double-down'
+      .app-description-top__main__box__btn
+        = link_to new_user_session_path, class: "blue-link-btn text-line-none　btn-ignore" do
+          はじめる

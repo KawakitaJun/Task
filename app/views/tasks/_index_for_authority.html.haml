@@ -44,7 +44,7 @@
           = "詳細"
 
     %tbody
-      - @current_department_results.each do |result|
+      - (@current_department_results || []).each do |result|
         %tr.d-flex
           = form_for(result, url: task_path(result.id)) do |f|
             - if result.errors.any?
@@ -60,7 +60,7 @@
 
             - if result.user_id == current_user.id
               %td.name-field
-                = f.text_field :name, class: 'form-control col-12 taskform'
+                = f.text_field :name, :size =>  "1x1",class: 'form-control col-12 taskform'
               %td.category-select
                 = f.collection_select :category_id, current_user.categories.all, :id, :name, {}, class: 'form-control col-12 taskform'
               %td.client-select
@@ -77,7 +77,7 @@
                 = link_to '削除', task_path(result.id), method: :delete, data: { confirm: '削除しますか?' }, class: 'btn btn-outline-secondary btn-sm btn-block py-0'
               %td.btn-1
                 = link_to '詳細',  edit_taskdetail_path(result.id), class: 'btn btn-outline-secondary btn-sm btn-block py-0'
-            -else
+            - else
               %td.name-field
                 = result.name
               %td.category-select
