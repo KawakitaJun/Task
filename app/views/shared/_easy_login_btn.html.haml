@@ -1,7 +1,7 @@
-.easy-login
+.easy-login.box-center
   .easy-login__title.text-red
     お好みのテストアカウントを選んでください。
-  .easy-login__btn.display-flex
+  .easy-login__btn.display-flex.box-center
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       = f.email_field :email, value: "admin@admin", type: "hidden"
       = f.password_field :password, value: "admin1", type: "hidden"
