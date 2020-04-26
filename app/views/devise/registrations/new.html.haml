@@ -10,6 +10,8 @@
         - if devise_error_messages!.present?
           .signup__main__alert
             = devise_error_messages!
+        .user-detail__department_id
+          = f.hidden_field :department_id, value: "1", type: "hidden"
         .user-detail__top.form-content
           名前
         .user-detail__name-input
