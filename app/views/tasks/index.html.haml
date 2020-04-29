@@ -1,6 +1,17 @@
-= render "shared/content_header"
-
--if current_user.authority?
-  = render 'index_for_authority'
--else
-  = render 'index_for_regular'
+.task
+  = render "shared/content_header"
+  .task__main
+    .task__main__search-section
+      .task__main__logo
+        タスク検索
+      .task__main__search.box-flex
+        = render 'task_search'
+    .task__main__table-section
+      .task__main__logo
+        タスク一覧
+      .task__main__table
+        = render 'task_table'
+      .task__main__flash.width95
+        %section.flash-area
+          -flash. each do |key, value|
+            = content_tag(:div, value, class: "#key")

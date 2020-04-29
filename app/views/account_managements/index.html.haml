@@ -1,97 +1,152 @@
-= render "shared/content_header"
+.account_management
+  = render "shared/content_header"
+  .account_management__main
+    .account_management__main__logo
+      ユーザー一覧
+    .account_management__main__table
+      = search_form_for(@q, url: account_managements_path) do |f| 
+        %table.width95
+          %thead
+            %tr
+              %th.width2
+                =sort_link(@q, :id, "ID")
+              %th.width20
+                =sort_link(@q, :name, "名前")
+              %th.width20
+                =sort_link(@q, :email, "ﾒｰﾙｱﾄﾞﾚｽ")
+              %th.width20
+                =sort_link(@q, :department_name, "部署")
+              %th.width3.font-size14
+                =sort_link(@q, :authority, "閲覧権限")
+              %th.width15
+                = "パスワード"
+              %th.width10
+                = "変更/作成"
+              %th.width10
+                = "削除"
+          %tbody
+            - @results.each do |result|
+              %tr
+                = form_for(result, url: account_management_path(result.id)) do |f|
+                  %td
+                    = result.id
+                  %td
+                    = f.text_field :name, class: 'table-input'
+                  %td
+                    = f.text_field :email, class: 'table-input'
+                  %td
+                    .table-select-input.table-select
+                      = f.collection_select :department_id, Department.all, :id, :name, {}, class: ''
+                  %td
+                    = f.check_box :authority, {}, :as => :boolean
+                  %td
+                    = '---'
+                  %td
+                    = f.submit '変更', class: 'mini-blue-white-btn'
+                  %td
+                    = link_to '削除', account_management_path(result.id), method: :delete, data: { confirm: '削除しますか?' }, class: 'mini-gray-white-btn'
+            %tr
+              = form_for(@new_user, url: account_managements_path(@new_user)) do |f|
+                %td
+                  -
+                %td
+                  = f.text_field :name, placeholder: '> name', class: 'table-input'
+                %td
+                  = f.email_field :email, placeholder: '> e-mail', class: 'table-input'
+                %td
+                  .table-select-input.table-select
+                    = f.collection_select :department_id, Department.all, :id, :name, {}, class: ''
+                %td
+                  = f.check_box :authority, {}, "true", "false"
+                %td
+                  = f.password_field :password, placeholder: '> pass(6文字以上)', class: 'table-input'
+                %td
+                  = f.submit '作成', class: 'mini-blue-white-btn'
+                %td
+                  
+    .department__main__flash.width95
+      %section.flash-area
+        -flash. each do |key, value|
+          = content_tag(:div, value, class: "#key")
 
-.section-header
-  %a{ href: account_managements_path }
-    %h3 アカウント管理
-  .section-header-breadcrumb
-    .breadcrumb-item
-      %a{ href: departments_path }部署管理
-    .breadcrumb-item.active
-      %a アカウント管理
-    .breadcrumb-item
-      %a{ href: edit_user_registration_path}アカウント設定
+= search_form_for(@q, url: account_managements_path) do |f| 
+  %table.table.table-striped.table-hover.table-sm.table-bordered
+    %thead.text-center
+      %tr.d-flex
+        %th.col-1
+          =sort_link(@q, :id, "ID")
+        %th.col-2
+          =sort_link(@q, :name, "名前")
+        %th.col-2
+          =sort_link(@q, :email, "ﾒｰﾙｱﾄﾞﾚｽ")
+        %th.col-1
+          =sort_link(@q, :department_name, "部署")
+        %th.col-1
+          =sort_link(@q, :authority, "閲覧権限")
+        %th.col-3
+          = "パスワード"
+        %th.col-1
+          = "変更/作成"
+        %th.col-1
+          = "削除"
 
-.card
-  %h4 アカウント一覧
-  = search_form_for(@q, url: account_managements_path) do |f| 
-    %table.table.table-striped.table-hover.table-sm.table-bordered
-      %thead.text-center
+    %tbody
+      - @results.each do |result|
         %tr.d-flex
-          %th.col-1
-            =sort_link(@q, :id, "ID")
-          %th.col-2
-            =sort_link(@q, :name, "名前")
-          %th.col-2
-            =sort_link(@q, :email, "ﾒｰﾙｱﾄﾞﾚｽ")
-          %th.col-1
-            =sort_link(@q, :department_name, "部署")
-          %th.col-1
-            =sort_link(@q, :authority, "閲覧権限")
-          %th.col-3
-            = "パスワード"
-          %th.col-1
-            = "変更/作成"
-          %th.col-1
-            = "削除"
-
-      %tbody
-        - @results.each do |result|
-          %tr.d-flex
-            = form_for(result, url: account_management_path(result.id)) do |f|
-              - if result.errors.any?
-                #error_explanation
-                  %h2
-                    = pluralize(result.errors.count, "error")
-                    prohibited this user from being saved:
-
-                %ul
-                  - result.errors.full_messages.each do |message|
-                    %li 
-                      = message
-              %td.col-1
-                = result.id
-              %td.col-2
-                = f.text_field :name, class: 'form-control col-12 taskform'
-              %td.col-2
-                = f.text_field :email, class: 'form-control col-12 taskform'
-              %td.col-1
-                = f.collection_select :department_id, Department.all, :id, :name, {}, class: 'form-control col-12 taskform'
-              %td.col-1
-                = f.check_box :authority, {}, :as => :boolean
-              %td.col-3
-                = '---'
-              %td.col-1
-                = f.submit '変更', class: 'btn btn-outline-secondary btn-sm btn-block py-0'
-              %td.col-1
-                = link_to '削除', account_management_path(result.id), method: :delete, data: { confirm: '削除しますか?' }, class: 'btn btn-outline-secondary btn-sm btn-block py-0'
-        %tr.d-flex
-          = form_for(@new_user, url: account_managements_path(@new_user)) do |f|
-            - if @new_user.errors.any?
+          = form_for(result, url: account_management_path(result.id)) do |f|
+            - if result.errors.any?
               #error_explanation
                 %h2
-                  = pluralize(@new_user.errors.count, "error")
+                  = pluralize(result.errors.count, "error")
                   prohibited this user from being saved:
 
               %ul
-                - @new_user.errors.full_messages.each do |message|
+                - result.errors.full_messages.each do |message|
                   %li 
                     = message
-
             %td.col-1
-              -
+              = result.id
             %td.col-2
               = f.text_field :name, class: 'form-control col-12 taskform'
             %td.col-2
-              = f.email_field :email, class: 'form-control col-12 taskform'
+              = f.text_field :email, class: 'form-control col-12 taskform'
             %td.col-1
               = f.collection_select :department_id, Department.all, :id, :name, {}, class: 'form-control col-12 taskform'
             %td.col-1
-              = f.check_box :authority, {}, "true", "false"
+              = f.check_box :authority, {}, :as => :boolean
             %td.col-3
-              = f.password_field :password, class: 'form-control col-12 taskform'
+              = '---'
             %td.col-1
-              = f.submit '作成', class: 'btn btn-outline-primary btn-sm btn-block py-0'
+              = f.submit '変更', class: 'btn btn-outline-secondary btn-sm btn-block py-0'
+            %td.col-1
+              = link_to '削除', account_management_path(result.id), method: :delete, data: { confirm: '削除しますか?' }, class: 'btn btn-outline-secondary btn-sm btn-block py-0'
+      %tr.d-flex
+        = form_for(@new_user, url: account_managements_path(@new_user)) do |f|
+          - if @new_user.errors.any?
+            #error_explanation
+              %h2
+                = pluralize(@new_user.errors.count, "error")
+                prohibited this user from being saved:
 
+            %ul
+              - @new_user.errors.full_messages.each do |message|
+                %li 
+                  = message
+
+          %td.col-1
+            -
+          %td.col-2
+            = f.text_field :name, class: 'form-control col-12 taskform'
+          %td.col-2
+            = f.email_field :email, class: 'form-control col-12 taskform'
+          %td.col-1
+            = f.collection_select :department_id, Department.all, :id, :name, {}, class: 'form-control col-12 taskform'
+          %td.col-1
+            = f.check_box :authority, {}, "true", "false"
+          %td.col-3
+            = f.password_field :password, class: 'form-control col-12 taskform'
+          %td.col-1
+            = f.submit '作成', class: 'btn btn-outline-primary btn-sm btn-block py-0'
 %section.flash-area
   -flash. each do |key, value|
     = content_tag(:div, value, class: "#key")

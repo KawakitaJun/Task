@@ -13,7 +13,7 @@
       %ul.header__box__content.signedin.display-flex.box-right
         - if current_user.admin? 
           %li.header__box__content__text
-            = link_to destroy_user_session_path, method: :delete, class: 'header-text text-white1', data: {"turbolinks" => false} do
+            = link_to destroy_user_session_path, method: :delete, class: 'header-text text-white1', data: {"turbolinks" => false, confirm: 'ログアウトしますか?'} do
               = icon 'fas', 'sign-out-alt'
               ログアウト
           %li.header__box__content__text
@@ -22,7 +22,7 @@
               マイページ
         - else
           %li.header__box__content__text
-            = link_to destroy_user_session_path, method: :delete, class: 'header-text text-white1', data: {"turbolinks" => false} do
+            = link_to destroy_user_session_path, method: :delete, class: 'header-text text-white1', data: {"turbolinks" => false, confirm: 'ログアウトしますか?'} do
               = icon 'fas', 'sign-out-alt'
               ログアウト
           %li.header__box__content__text

@@ -142,21 +142,6 @@ a, a:visited, a:focus, a:hover {
   }
 }
 
-.table-input{
-  width: 90%;
-  height: 24px;
-  border-bottom: none;
-  border-right:none;
-  border-left:none;
-  border-top:none;
-  color: #007bff;
-
-  &:focus{
-    outline: none;
-    border-bottom: 1px solid #007bff;
-  }
-}
-
 /* note用のフォーム */
 .note-area{
   width: 100%;
@@ -170,26 +155,6 @@ a, a:visited, a:focus, a:hover {
     outline: none;
     border: 1px solid #4ba53a;
   }
-}
-
-/* セレクトフォームのプルダウン設定 */
-.select-box{
-  @include pull_down(100%);
-  margin-top: 8px;
-  &:focus{
-    outline: none;
-    border: 1px solid #4ba53a;
-  }
-}
-
-/* 日付セレクトフォーム設定 */
-.day, .month {
-  @include pull_down(40px);
-  margin-top: 8px;
-}
-.year {
-  @include pull_down(60px);
-  margin-top: 8px;
 }
 
 /* フォームのコンテンツタイトル */
@@ -416,6 +381,10 @@ a, a:visited, a:focus, a:hover {
   margin-left: 10px;
 }
 
+.padding-left-5{
+  padding-left: 5px;
+}
+
 .padding-left-30{
   padding-left: 30px;
 }
@@ -433,3 +402,114 @@ a, a:visited, a:focus, a:hover {
 .border-top{
   border-top: 1px solid #ccc;
 }
+
+/////////////////////////
+/*****フォントサイズ*****/
+/////////////////////////
+
+/* 14px*/
+.font-size14{
+  font-size: 14px;
+}
+
+#font-size12{
+  font-size: 12px;
+}
+
+/////////////////////////
+/****幅****/
+/////////////////////////
+.width98{
+  width: 98%;
+}
+
+.width95{
+  width: 95%;
+}
+
+.width70{
+  width: 70%;
+}
+
+.width40{
+  width: 40%;
+}
+
+.width30{
+  width: 30%;
+}
+
+.width25{
+  width: 25%;
+}
+
+.width20{
+  width: 20%;
+}
+
+.width15{
+  width: 15%;
+}
+
+.width10{
+  width: 10%;
+}
+
+.width5{
+  width: 5%;
+}
+
+.width3{
+  width: 3%;
+}
+
+.width2{
+  width: 2%;
+}
+
+/////////////////////////
+/*****セレクトボックス*****/
+/////////////////////////
+.table-select-input2 {
+	width: 90%;
+	margin: 0 auto;
+	text-align: center;
+}
+.table-select-input2 select {
+	width: 100%;
+	padding-right: 1em;
+	cursor: pointer;
+	text-indent: 0.01px;
+	text-overflow: ellipsis;
+	border: none;
+	outline: none;
+	background: transparent;
+	background-image: none;
+	box-shadow: none;
+	-webkit-appearance: none;
+  appearance: none;
+}
+.table-select-input2 select::-ms-expand {
+    display: none;
+}
+.table-select-input2.table-select {
+	position: relative;
+	background: white;
+}
+.table-select-input2.table-select::before {
+	position: absolute;
+	top: 0.5em;
+	right: 0.5em;
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid #007bff;
+	pointer-events: none;
+}
+.table-select-input2.table-select select {
+	color: #007bff;
+}
+
