@@ -1,11 +1,21 @@
 /////////////////////////
-/******テキスト関連*******/
+/******基本設定*******/
 /////////////////////////
+body {
+  background-color: #fafdfb;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Open Sans', 'YuGothic_Family', 'YuGothic', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+  color: #6c757d;  
+}
 
-/* bootstrap対応 */
 a, a:visited, a:focus, a:hover {
   text-decoration: none;
 }
+
+/////////////////////////
+/******テキスト関連*******/
+/////////////////////////
 
 /* アンダーラインなし */
 .text-line-none{
@@ -82,7 +92,7 @@ a, a:visited, a:focus, a:hover {
 
 /* 右寄せ */
 .text-right{
-  text-align: center;
+  text-align: right;
 }
 
 .clearfix {
@@ -126,6 +136,21 @@ a, a:visited, a:focus, a:hover {
   border-right:none;
   border-left:none;
   border-top:none;
+  &:focus{
+    outline: none;
+    border-bottom: 1px solid #007bff;
+  }
+}
+
+.table-input{
+  width: 90%;
+  height: 24px;
+  border-bottom: none;
+  border-right:none;
+  border-left:none;
+  border-top:none;
+  color: #007bff;
+
   &:focus{
     outline: none;
     border-bottom: 1px solid #007bff;
@@ -234,7 +259,7 @@ a, a:visited, a:focus, a:hover {
   border: 1px solid #007bff;
 }
 
-/* 黒色リンクボタン */
+/* 青リンクボタン */
 .blue-link-btn{
   @include btn-set(180px, 44px);
   display: inline-block;
@@ -289,6 +314,34 @@ a, a:visited, a:focus, a:hover {
   font-size: 12px;
 }
 
+.mini-blue-white-btn{
+  @include btn-set(60px, 29px);
+  display: inline-block;
+  color: #007bff;
+  background-color: #fff;
+  font-size: 16px;
+  border: 1px solid #007bff;
+
+  &:hover{
+    background-color: #007bff;
+    color: white;
+  }
+}
+
+.mini-gray-white-btn{
+  @include btn-set(60px, 29px);
+  display: inline-block;
+  color: gray;
+  background-color: #fff;
+  font-size: 16px;
+  border: 1px solid gray;
+
+  &:hover{
+    background-color: gray;
+    color: white;
+  }
+}
+
 
 /////////////////////////
 /******共通設定関連********/
@@ -303,8 +356,6 @@ a, a:visited, a:focus, a:hover {
 /////////////////////////
 /******背景設定関連********/
 /////////////////////////
-
-
 
 /* 青色設定 */
 .background-blue{

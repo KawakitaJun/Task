@@ -1,24 +1,39 @@
 .header{
   
   &__box{
-    @include height_width(60px, 100vw);
+    @include height_width(80px, 100vw);
     display: flex;
     
     &__logo{
-      @include text_size_height(30px, 60px);
-      margin-left: 100px;
+      @include text_size_height(34px, 80px);
+
+      &__signedin{
+        margin-left: 20px;
+      }
+
+      &__notsignedin{
+        margin-left:  100px;
+      }
     }
 
     &__content{
       width: 300px;
-      margin-right: 100px;
       justify-content: space-around;
 
+
       &__text{
-        @include text_size_height(20px, 60px);
+        @include text_size_height(20px, 80px);
         display: inline-block;
         position: relative;
       }
     }
+  }
+
+  .signedin{
+    margin-right: 10px;
+  }
+
+  .notsignedin{
+    margin-right: 100px;
   }
 }

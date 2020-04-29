@@ -1,14 +1,15 @@
 .footer{
   &__main{
-    height: 45px;
+    height: 80px;
+    padding-top: 13px;
     padding-right: 10px;
 
     &__logo{
-      font-size: 20px;
+      font-size: 30px;
     }
 
     &__text{
-      font-size: 5px;
+      font-size: 15px;
     }
   }
 }

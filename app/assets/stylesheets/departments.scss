@@ -1,7 +1,27 @@
-// Place all the styles related to the Departments controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-table#department {
-  width: 50%;
-  margin: 0 0;
+.department{
+  color: #007bff;
+
+  &__main{
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+    margin: 0 auto;
+    margin-bottom: 60px;
+    width: 90%;
+    padding: 20 50 50 50;
+
+    &__logo{
+      font-weight: 600;
+      font-size: 28px;
+      padding-bottom: 5;
+      margin-bottom: 10;
+      border-bottom: solid;
+      border-bottom-color: #007bff;
+    }
+
+    &__flash{
+      margin: 0 auto;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  }
 }

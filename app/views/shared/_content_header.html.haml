@@ -1,0 +1,69 @@
+.content-header
+  .content-header__main
+    .content-header__main__box
+      - if current_user.admin?
+        .content-header__main__box__logo
+          - if params[:controller] == "departments" && params[:action] == "index"
+            =link_to departments_path, class: "" do
+              部署管理
+          - elsif params[:controller] == "account_managements" && params[:action] == "index"
+            =link_to account_managements_path, class: "" do
+              ユーザー管理
+          - elsif params[:controller] == "devise/registrations" && params[:action] == "edit"
+            =link_to edit_user_registration_path, class: "" do
+              アカウント設定
+        .content-header__main__box__bread-crumb
+          - if params[:controller] == "departments" && params[:action] == "index"
+            .bread-crumb-item.active
+              部署管理
+          - else
+            .bread-crumb-item
+              =link_to departments_path, class: "" do
+                部署管理
+          - if params[:controller] == "account_managements" && params[:action] == "index"
+            .bread-crumb-item.active
+              ユーザー管理
+          - else
+            .bread-crumb-item
+              =link_to account_managements_path, class: "" do
+                ユーザー管理
+          - if params[:controller] == "devise/registrations" && params[:action] == "edit"
+            .bread-crumb-item.active
+              アカウント設定
+          - else
+            .bread-crumb-item
+              =link_to edit_user_registration_path, class: "" do
+                アカウント設定
+      - else
+        .content-header__main__box__logo
+          - if params[:controller] == "tasks" && params[:action] == "index" || params[:controller] == "taskdetails" && params[:action] == "edit"
+            =link_to tasks_path, class: "" do
+              タスク管理
+          - elsif params[:controller] == "categories" && params[:action] == "index"
+            =link_to categories_path, class: "" do
+              カテゴリー登録
+          - elsif params[:controller] ==  "devise/registrations" && params[:action] == "edit"
+            =link_to edit_user_registration_path, class: "" do
+              アカウント設定
+        .content-header__main__box__bread-crumb
+          - if params[:controller] == "tasks" && params[:action] == "index" || params[:controller] == "taskdetails" && params[:action] == "edit"
+            .bread-crumb-item.active
+              タスク管理
+          - else
+            .bread-crumb-item
+              =link_to tasks_path, class: "" do
+                タスク管理
+          - if params[:controller] == "categories" && params[:action] == "index"
+            .bread-crumb-item.active
+              カテゴリー登録
+          - else
+            .bread-crumb-item
+              =link_to categories_path, class: "" do
+                カテゴリー登録
+          - if params[:controller] ==  "devise/registrations" && params[:action] == "edit"
+            .bread-crumb-item.active
+              アカウント設定
+          - else
+            .bread-crumb-item
+              =link_to edit_user_registration_path, class: "" do
+                アカウント設定

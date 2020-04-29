@@ -1,13 +1,4 @@
-.section-header
-  %a{ href: tasks_path }
-    %h3 タスク管理
-  .section-header-breadcrumb
-    .breadcrumb-item.active
-      %a タスク管理
-    .breadcrumb-item
-      %a{ href: categories_path}カテゴリー登録
-    .breadcrumb-item
-      %a{ href: edit_user_registration_path}アカウント設定
+= render "shared/content_header"
 
 -if current_user.authority?
   = render 'index_for_authority'

@@ -1,0 +1,52 @@
+.card {
+  background-color: #fff;
+  border-radius: 3px;
+  border: none;
+  position: relative;
+}
+
+
+.card h4 {
+  padding-bottom: 5;
+  margin-bottom: 20;
+  border-bottom: solid;
+  border-bottom-color: #007bff;
+  color: #007bff;
+}
+
+.card h5 {
+  padding-top: 15;
+  padding-bottom: 5;
+  margin-bottom: 0;
+  color: #007bff;
+}
+
+h6 {
+  color: #007bff;
+  font-size: 14px;
+  height: 21px;
+  line-height: 1.5;
+  margin-left: 20px;
+  &.first-taskdetail {
+    margin-left: 0;
+  }
+}
+
+.top-page-background {
+  background-color: #007bff;
+  height: 100%;
+  width: 100%;
+  color: white;
+}
+
+.top-page-logo {
+  padding-top: 100px;
+}
+
+.top-page {
+  font-size: 20px;
+}
+
+#top-page-btn:hover{
+  color: #007bff;
+}
