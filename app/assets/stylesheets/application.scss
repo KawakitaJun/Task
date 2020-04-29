@@ -13,22 +13,28 @@
  */
 
  //reset
- @import "reset";
+@import "reset";
+
+ //old
+@import "x/old_common";
 
  // gem
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
- // pages
+ // common
 @import "modules/mixin";
 @import "modules/variable";
 @import "modules/common";
+@import "modules/table";
 
+ //pages
 @import "shared/header";
 @import "shared/footer";
 @import "shared/content_top";
 @import "shared/easy_login_btn";
+@import "shared/content_header";
 
 @import "top-page/top-page_index";
 @import "top-page/app_description";
@@ -36,176 +42,4 @@
 @import "login_logout_signup/login";
 @import "login_logout_signup/signup";
 
-
-
-body {
-  margin: 0;
-  background-color: #fafdfb;
-  font-size: 14px;
-  font-weight: 400;
-  font-family: 'Nunito', 'Segoe UI', arial;
-  color: #6c757d;
-}
-
-.card {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
-  background-color: #fff;
-  border-radius: 3px;
-  border: none;
-  position: relative;
-  margin: 0 auto;
-  margin-bottom: 30px;
-  width: 98%;
-  padding: 10 15;
-}
-
-.table {
-  width: 98%;
-  margin: 0 auto;
-}
-
-.section-header {
-  margin: 0 auto;
-  border-radius: 0;
-  border-top: 1px solid #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
-  background-color: #fff;
-  border: none;
-  position: relative;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  background-color: #fafdfb;
-}
-
-.section-header-breadcrumb {
-  margin-left: auto;
-  display: flex;
-}
-
-.section-header h3 {
-  margin-bottom: 0;
-  color: #007bff;
-}
-
-.card h4 {
-  padding-bottom: 5;
-  margin-bottom: 20;
-  border-bottom: solid;
-  border-bottom-color: #007bff;
-  color: #007bff;
-}
-
-.card h5 {
-  padding-top: 15;
-  padding-bottom: 5;
-  margin-bottom: 0;
-  color: #007bff;
-}
-
-th {
-  color: #007bff;
-}
-
-.navbar-dark .navbar-nav .nav-link {
-  color: #fff;
-}
-
-.actions {
-  margin-top: 10;
-  padding-bottom: 0;
-}
-
-label {
-  font-size: 15;
-  padding: 3 0;
-  margin: 0 5;
-}
-
-.task_search {
-  display: flex;
-}
-
-select {
-  &#category_id {
-    height: 30px;
-  }
-  &#client_id {
-    height: 30px;
-  }
-}
-
-.taskform {
-  margin-right: 0;
-  height: 27px;
-}
-
-.edit_client {
-  display: flex;
-}
-
-.edit_category {
-  display: flex;
-}
-
-#searchbtn {
-  margin: 0 3;
-}
-
-.btn-1 {
-  width: 5%;
-}
-
-.date-select {
-  :first-child {
-    display: inline-block;
-    width: 70;
-  }
-  :nth-child(2) {
-    display: inline-block;
-    width: 110;
-  }
-  :last-child {
-    display: inline-block;
-    width: 50;
-  }
-}
-
-.form-control {
-  background-color: #fff;
-  border-color: #007bff;
-  margin-right: 3px;
-}
-
-.name-field {
-  width: 20%;
-}
-
-.category-select {
-  width: 20%;
-}
-
-.client-select {
-  width: 20%;
-}
-
-.date-select {
-  width: 23%;
-}
-.status-select {
-  width: 7%;
-}
-.user-name {
-  width: 5%;
-}
-
-h6 {
-  color: #007bff;
-  font-size: 14px;
-  height: 21px;
-  line-height: 1.5;
-  margin-left: 20px;
-  &.first-taskdetail {
-    margin-left: 0;
-  }
-}
+@import "departments";

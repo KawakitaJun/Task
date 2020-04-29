@@ -1,4 +1,4 @@
-$(function(){
+$(document).on("ready turbolinks:load", function(){
   $('.start-btn').hover(
     function(){
       $(this).css(
@@ -37,14 +37,14 @@ $(function(){
     function(){
       $(this).animate(
         {
-          'width': '120px'
+          'width': '120px',
         },150
       )
     },
     function(){
       $(this).animate(
         {
-          'width': '100px'
+          'width': '100px',
         },150
       )
     }
@@ -80,7 +80,7 @@ $(function(){
     function(){
       $(this).animate(
         {
-          'width': '180px'
+          'width': '180px',
         },150
       )
     }

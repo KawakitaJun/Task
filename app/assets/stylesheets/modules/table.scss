@@ -1,0 +1,170 @@
+.table {
+  width: 98%;
+  margin: 0 auto;
+}
+
+th {
+  color: #007bff;
+}
+
+.taskform {
+  margin-right: 0;
+  height: 27px;
+}
+
+
+.actions {
+  margin-top: 10;
+  padding-bottom: 0;
+}
+
+label {
+  font-size: 15;
+  padding: 3 0;
+  margin: 0 5;
+}
+
+.task_search {
+  display: flex;
+}
+
+select {
+  &#category_id {
+    height: 30px;
+  }
+  &#client_id {
+    height: 30px;
+  }
+}
+
+.edit_client {
+  display: flex;
+}
+
+.edit_category {
+  display: flex;
+}
+
+#searchbtn {
+  margin: 0 3;
+}
+
+.btn-1 {
+  width: 5%;
+}
+
+.date-select {
+  :first-child {
+    display: inline-block;
+    width: 70;
+  }
+  :nth-child(2) {
+    display: inline-block;
+    width: 110;
+  }
+  :last-child {
+    display: inline-block;
+    width: 50;
+  }
+}
+
+.form-control {
+  background-color: #fff;
+  border-color: #007bff;
+  margin-right: 3px;
+}
+
+.name-field {
+  width: 20%;
+}
+
+.category-select {
+  width: 20%;
+}
+
+.client-select {
+  width: 20%;
+}
+
+.date-select {
+  width: 23%;
+}
+.status-select {
+  width: 7%;
+}
+.user-name {
+  width: 5%;
+}
+
+
+
+/* 新テーブルフォーマット */
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  padding: 0;
+  table-layout: fixed;
+  color: #007bff;
+
+  tr{
+    background-color: #fff;
+    padding: 5px;
+    border-bottom: 1px dotted #007bff;
+
+    &:last-child{
+      border-bottom: 2px solid #007bff;
+    }
+  }
+
+  tbody{
+    tr{
+      &:hover{
+        background-color: #E0F8F7;
+      }
+
+      &:hover .table-input{
+        background-color: #E0F8F7;
+      }
+    }
+
+    th{
+      color: #007bff;
+    }
+  }
+
+  th{
+    font-size: 18px;
+    font-weight: 600;
+    padding: 20px 0px;
+    text-align: center;
+  }
+
+  td{
+    padding: 10px 0px;
+    text-align: center;
+  }
+}
+
+.width70{
+  width: 70%;
+}
+
+.width40{
+  width: 40%;
+}
+
+.width30{
+  width: 30%;
+}
+
+.width20{
+  width: 20%;
+}
+
+.width15{
+  width: 15%;
+}
+
+.width10{
+  width: 10%;
+}

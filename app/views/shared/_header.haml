@@ -1,10 +1,16 @@
-%header.header.main-font
+.header
   .header__box.background-blue
     .header__box__logo.box-left
-      = link_to root_path, class: 'header-logo  font-bold text-white1', data: {"turbolinks" => false} do
-        Task-Manager
-    %ul.header__box__content.box-right.display-flex
       - if user_signed_in?
+        .header__box__logo__signedin
+          = link_to root_path, class: 'header-logo  font-bold text-white1', data: {"turbolinks" => false} do
+            Task-Manager
+      - else
+        .header__box__logo__notsignedin
+          = link_to root_path, class: 'header-logo  font-bold text-white1', data: {"turbolinks" => false} do
+            Task-Manager
+    - if user_signed_in?
+      %ul.header__box__content.signedin.display-flex.box-right
         - if current_user.admin? 
           %li.header__box__content__text
             = link_to destroy_user_session_path, method: :delete, class: 'header-text text-white1', data: {"turbolinks" => false} do
@@ -23,7 +29,8 @@
             = link_to tasks_path, class: 'header-text text-white1', data: {"turbolinks" => false} do
               = icon 'fas', 'user'
               マイページ
-      - else
+    - else
+      %ul.header__box__content.notsignedin.display-flex.box-right
         %li.header__box__content__text
           = link_to new_user_registration_path, class: 'header-text text-white1', data: {"turbolinks" => false} do
             = icon 'fas', 'user-plus'
