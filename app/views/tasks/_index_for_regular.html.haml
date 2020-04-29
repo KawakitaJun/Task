@@ -1,108 +1,93 @@
-.card
-  %h4 タスク検索
-  = search_form_for @q do |f| 
+.task__main
+  .task__main__search-section
+    .task__main__logo
+      タスク検索
+    .task__main__search.box-flex
+      = search_form_for @q do |f| 
 
-    = f.label :name, "タスク名："
-    = f.search_field :name_cont, class: 'form-control col-1 taskform'
+        = f.label :name, "タスク名：", {class: 'search-label'}
+        = f.search_field :name_cont, class: 'search-input'
 
-    = f.label :category_id, "カテゴリー："
-    = f.collection_select :category_id_eq, current_user.categories.all, :id, :name, {include_blank: true}, class: 'form-control col-1 taskform'
+        = f.label :category_id, "カテゴリー：", {class: 'search-label'}
+        = f.collection_select :category_id_eq, current_user.categories.all, :id, :name, {include_blank: true}, class: 'search-select-input'
 
-    = f.label :client_id, "依頼元："
-    = f.collection_select :client_id_eq, current_user.clients.all, :id, :name, {include_blank: true}, class: 'form-control col-1 taskform'
+        = f.label :client_id, "依頼元：", {class: 'search-label'}
+        = f.collection_select :client_id_eq, current_user.clients.all, :id, :name, {include_blank: true}, class: 'search-select-input'
 
-    = f.label :duedate, "期限："
-    = f.date_field :duedate_gteq, class: 'form-control col-1 taskform'
-    = "〜"
-    = f.date_field :duedate_lteq, class: 'form-control col-1 taskform'
+        = f.label :duedate, "期限：", {class: 'search-label'}
+        = f.date_field :duedate_gteq, class: 'search-select-input'
+        = "〜"
+        = f.date_field :duedate_lteq, class: 'search-select-input'
 
-    = f.submit "検索", class: 'btn btn-outline-primary btn-sm py-0', id: 'searchbtn'
-    = link_to '全表示', request.path, class: 'btn btn-outline-secondary btn-sm py-0 d-flex align-items-center', id: 'searchbtn'
-
-.card
-  %h4 タスク一覧
-  %table.table.table-striped.table-hover.table-sm.table-bordered
-    %thead.text-center
-      %tr.d-flex
-        %th.name-field
-          = sort_link(@q, :name, "名前")
-        %th.category-select
-          = sort_link(@q, :category_name, "ｶﾃｺﾞﾘｰ")
-        %th.client-select
-          = sort_link(@q, :client_name, "依頼元")
-        %th.date-select
-          = sort_link(@q, :duedate, "期限")
-        %th.status-select
-          = sort_link(@q, :status_id, "状態")
-        %th.user-name
-          = sort_link(@q, :user, "担当")
-        %th.btn-1
-          = "変更/作成"
-        %th.btn-1
-          = "削除"
-        %th.btn-1
-          = "詳細"
-
-    %tbody
-      - @current_user_results.each do |result|
-        %tr.d-flex
-          = form_for(result, url: task_path(result.id)) do |f|
-            - if result.errors.any?
-              #error_explanation
-                %h2
-                  = pluralize(result.errors.count, "error")
-                  prohibited this user from being saved:
-              %ul
-                - result.errors.full_messages.each do |message|
-                  %li 
-                    = message
-            %td.name-field
-              = f.text_field :name, class: 'form-control col-12 taskform'
-            %td.category-select
-              = f.collection_select :category_id, current_user.categories.all, :id, :name, {}, class: 'form-control col-12 taskform'
-            %td.client-select
-              = f.collection_select :client_id, current_user.clients.all, :id, :name, {}, class: 'form-control col-12 taskform'
-            %td.date-select
-              = f.date_select :duedate, {}, class: 'form-control taskform'
-            %td.status-select
-              = f.collection_select :status_id, Status.all, :id, :name, {}, class: 'form-control col-12 taskform'
-            %td.user-name
-              = result.user.name
-            %td.btn-1
-              = f.submit '変更',class: 'btn btn-outline-secondary btn-sm btn-block py-0'
-            %td.btn-1
-              = link_to '削除', task_path(result.id), method: :delete, data: { confirm: '削除しますか?' }, class: 'btn btn-outline-secondary btn-sm btn-block py-0'
-            %td.btn-1
-              = link_to '詳細',  edit_taskdetail_path(result.id), class: 'btn btn-outline-secondary btn-sm btn-block py-0'
-      %tr.d-flex
-        = form_for(@new_task) do |f|
-          - if @new_task.errors.any?
-            #error_explanation
-              %h2
-                = pluralize(@new_task.errors.count, "error")
-                prohibited this user from being saved:
-            %ul
-              - @new_task.errors.full_messages.each do |message|
-                %li 
-                  = message
-          %td.name-field
-            = f.text_field :name, class: 'form-control col-12 taskform'
-          %td.category-select
-            = f.collection_select :category_id, current_user.categories.all, :id, :name, {}, class: 'form-control col-12 taskform'
-          %td.client-select
-            = f.collection_select :client_id, current_user.clients.all, :id, :name, {}, class: 'form-control col-12 taskform'
-          %td.date-select
-            = f.date_select :duedate,{}, class: 'form-control taskform'
-          %td.status-select
-            = f.collection_select :status_id, Status.all, :id, :name, {}, class: 'form-control col-12 taskform'
-          %td.user-name
-            = f.hidden_field :user_id, value: current_user.id
-            = current_user.name
-          %td.btn-1
-            = f.submit '作成', class: 'btn btn-outline-primary btn-sm btn-block py-0'
-          %td.btn-1
-          %td.btn-1
-
-  %section.flash-area
-    -flash. each do |key, value|
-      = content_tag(:div, value, class: "#key")
+        = f.submit "検索", class: 'btn btn-outline-primary btn-sm py-0', id: ''
+        = link_to '全表示', request.path, class: 'btn btn-outline-secondary btn-sm py-0 d-flex align-items-center', id: ''
+  .task__main__table-section
+    .task__main__logo
+      タスク一覧
+    .task__main__table
+      %table.table.table-striped.table-hover.table-sm.table-bordered
+        %thead.text-center
+          %tr
+            %th.name-field
+              = sort_link(@q, :name, "名前")
+            %th.category-select
+              = sort_link(@q, :category_name, "ｶﾃｺﾞﾘｰ")
+            %th.client-select
+              = sort_link(@q, :client_name, "依頼元")
+            %th.date-select
+              = sort_link(@q, :duedate, "期限")
+            %th.status-select
+              = sort_link(@q, :status_id, "状態")
+            %th.user-name
+              = sort_link(@q, :user, "担当")
+            %th.btn-1
+              = "変更/作成"
+            %th.btn-1
+              = "削除"
+            %th.btn-1
+              = "詳細"
+        %tbody
+          - @current_user_results.each do |result|
+            %tr.
+              = form_for(result, url: task_path(result.id)) do |f|
+                %td.name-field
+                  = f.text_field :name, class: 'form-control col-12 taskform'
+                %td.category-select
+                  = f.collection_select :category_id, current_user.categories.all, :id, :name, {}, class: 'form-control col-12 taskform'
+                %td.client-select
+                  = f.collection_select :client_id, current_user.clients.all, :id, :name, {}, class: 'form-control col-12 taskform'
+                %td.date-select
+                  = f.date_select :duedate, {}, class: 'form-control taskform'
+                %td.status-select
+                  = f.collection_select :status_id, Status.all, :id, :name, {}, class: 'form-control col-12 taskform'
+                %td.user-name
+                  = result.user.name
+                %td.btn-1
+                  = f.submit '変更',class: 'btn btn-outline-secondary btn-sm btn-block py-0'
+                %td.btn-1
+                  = link_to '削除', task_path(result.id), method: :delete, data: { confirm: '削除しますか?' }, class: 'btn btn-outline-secondary btn-sm btn-block py-0'
+                %td.btn-1
+                  = link_to '詳細',  edit_taskdetail_path(result.id), class: 'btn btn-outline-secondary btn-sm btn-block py-0'
+          %tr
+            = form_for(@new_task) do |f|
+              %td.name-field
+                = f.text_field :name, class: 'form-control col-12 taskform'
+              %td.category-select
+                = f.collection_select :category_id, current_user.categories.all, :id, :name, {}, class: 'form-control col-12 taskform'
+              %td.client-select
+                = f.collection_select :client_id, current_user.clients.all, :id, :name, {}, class: 'form-control col-12 taskform'
+              %td.date-select
+                = f.date_select :duedate,{}, class: 'form-control taskform'
+              %td.status-select
+                = f.collection_select :status_id, Status.all, :id, :name, {}, class: 'form-control col-12 taskform'
+              %td.user-name
+                = f.hidden_field :user_id, value: current_user.id
+                = current_user.name
+              %td.btn-1
+                = f.submit '作成', class: 'btn btn-outline-primary btn-sm btn-block py-0'
+              %td.btn-1
+              %td.btn-1
+    .task__main__flash.width95
+      %section.flash-area
+        -flash. each do |key, value|
+          = content_tag(:div, value, class: "#key")

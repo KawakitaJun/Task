@@ -5,7 +5,7 @@
       部署一覧
     .department__main__table
       = search_form_for @q do |f| 
-        %table.width70
+        %table
           %thead
             %tr
               %th.width40
@@ -14,13 +14,13 @@
                 = "人数"
               %th.width15
                 = "タスク数"
-              %th.width15
+              %th.width15.font-size14
                 = "変更/作成"
               %th.width15
                 = "削除"
           %tbody
             - @results.each do |result|
-              %tr.table-input-hover
+              %tr
                 = form_for(result) do |f|
                   %td
                     = f.text_field :name, class: 'table-input'
@@ -32,7 +32,7 @@
                     = f.submit '変更', class: 'mini-blue-white-btn'
                   %td
                     = link_to '削除', department_path(result.id), method: :delete, data: { confirm: '削除しますか?' }, class: 'mini-gray-white-btn'
-            %tr.table-input-hover
+            %tr
               = form_for(@new_department) do |f|
                 %td
                   = f.text_field :name, placeholder: "> name", class: 'table-input'
@@ -44,8 +44,8 @@
                 %td
                   = f.submit '作成', class: 'mini-blue-white-btn'
                 %td
-                  = "−"
-    .department__main__flash.width70
+                  
+    .department__main__flash
       %section.flash-area
         -flash. each do |key, value|
           = content_tag(:div, value, class: "#key")

@@ -1,0 +1,149 @@
+- if current_user.authority?
+  %table.width95
+    %thead
+      %tr
+        %th.width20
+          = sort_link(@current_department_q, :name, "名前")
+        %th.width20
+          = sort_link(@current_department_q, :category_name, "カテゴリー")
+        %th.width10
+          = sort_link(@current_department_q, :client_name, "依頼元")
+        %th.width20
+          = sort_link(@current_department_q, :duedate, "期限")
+        %th.width5
+          = sort_link(@current_department_q, :status_id, "状態")
+        %th.width10
+          = sort_link(@current_department_q, :user_name, "担当")
+        %th.width5.font-size14
+          = "変更/作成"
+        %th.width5
+          = "削除"
+        %th.width5
+          = "詳細"
+    %tbody
+      - (@current_department_results).each do |result|
+        %tr
+          = form_for(result, url: task_path(result.id)) do |f|
+            - if result.user_id == current_user.id
+              %td
+                = f.text_field :name, class: 'table-input'
+              %td
+                = f.collection_select :category_id, current_user.categories.all, :id, :name, {}, class: 'table-select-input'
+              %td
+                = f.collection_select :client_id, current_user.clients.all, :id, :name, {}, class: 'table-select-input'
+              %td
+                = f.date_select :duedate, {use_month_numbers: true}, class: 'table-dateselect-input'
+              %td
+                = f.collection_select :status_id, Status.all, :id, :name, {}, class: 'table-select-input'
+              %td
+                = result.user.name
+              %td
+                = f.submit '変更',class: 'mini-blue-white-btn'
+              %td
+                = link_to '削除', task_path(result.id), method: :delete, data: { confirm: '削除しますか?' }, class: 'mini-gray-white-btn'
+              %td
+                = link_to '詳細',  edit_taskdetail_path(result.id), class: 'mini-blue-white-btn'
+            - else
+              %td.text-left.text-gray
+                .width98.box-center
+                  = result.name
+              %td.text-left.text-gray
+                .width98.box-center.padding-left-5
+                  = result.category.name
+              %td.text-left.text-gray
+                .width98.box-center.padding-left-5
+                  = result.client.name
+              %td.text-gray
+                = result.duedate
+              %td.text-gray
+                = result.status.name
+              %td.text-gray
+                = result.user.name
+              %td.text-gray
+                = "-"
+              %td.text-gray
+                = "-"
+              %td
+                = link_to '詳細',  edit_taskdetail_path(result.id), class: 'mini-blue-white-btn'
+      %tr
+        = form_for(@new_task) do |f|
+          %td
+            = f.text_field :name, placeholder: '> name', class: 'table-input'
+          %td
+            = f.collection_select :category_id, current_user.categories.all, :id, :name, {}, class: 'table-select-input'
+          %td
+            = f.collection_select :client_id, current_user.clients.all, :id, :name, {}, class: 'table-select-input'
+          %td
+            = f.date_select :duedate,{use_month_numbers: true}, class: 'table-dateselect-input'
+          %td
+            = f.collection_select :status_id, Status.all, :id, :name, {}, class: 'table-select-input'
+          %td
+            = f.hidden_field :user_id, value: current_user.id
+            = current_user.name
+          %td
+            = f.submit '作成', class: 'mini-blue-white-btn'
+          %td
+          %td
+- else
+  %table.width95
+    %thead
+      %tr
+        %th.width20
+          = sort_link(@q, :name, "名前")
+        %th.width20
+          = sort_link(@q, :category_name, "ｶﾃｺﾞﾘｰ")
+        %th.width10
+          = sort_link(@q, :client_name, "依頼元")
+        %th.width20
+          = sort_link(@q, :duedate, "期限")
+        %th.width5
+          = sort_link(@q, :status_id, "状態")
+        %th.width10
+          = sort_link(@q, :user, "担当")
+        %th.width5.font-size14
+          = "変更/作成"
+        %th.width5
+          = "削除"
+        %th.width5
+          = "詳細"
+    %tbody
+      - @current_user_results.each do |result|
+        %tr
+          = form_for(result, url: task_path(result.id)) do |f|
+            %td
+              = f.text_field :name, class: 'table-input'
+            %td
+              = f.collection_select :category_id, current_user.categories.all, :id, :name, {}, class: 'table-select-input'
+            %td
+              = f.collection_select :client_id, current_user.clients.all, :id, :name, {}, class: 'table-select-input'
+            %td
+              = f.date_select :duedate, {use_month_numbers: true}, class: 'table-dateselect-input'
+            %td
+              = f.collection_select :status_id, Status.all, :id, :name, {}, class: 'table-select-input'
+            %td
+              = result.user.name
+            %td
+              = f.submit '変更',class: 'mini-blue-white-btn'
+            %td
+              = link_to '削除', task_path(result.id), method: :delete, data: { confirm: '削除しますか?' }, class: 'mini-gray-white-btn'
+            %td
+              = link_to '詳細',  edit_taskdetail_path(result.id), class: 'mini-blue-white-btn'
+      %tr
+        = form_for(@new_task) do |f|
+          %td
+            = f.text_field :name, placeholder: '> name', class: 'table-input'
+          %td
+            = f.collection_select :category_id, current_user.categories.all, :id, :name, {}, class: 'table-select-input'
+          %td
+            = f.collection_select :client_id, current_user.clients.all, :id, :name, {}, class: 'table-select-input'
+          %td
+            = f.date_select :duedate,{use_month_numbers: true}, class: 'table-dateselect-input'
+          %td
+            = f.collection_select :status_id, Status.all, :id, :name, {}, class: 'table-select-input'
+          %td
+            = f.hidden_field :user_id, value: current_user.id
+            = current_user.name
+          %td
+            = f.submit '作成', class: 'mini-blue-white-btn'
+          %td
+          %td

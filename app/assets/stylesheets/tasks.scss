@@ -1,3 +1,39 @@
-// Place all the styles related to the Tasks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.task{
+  color: #007bff;
+
+  &__main{
+
+    &__search-section{
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+      margin: 0 auto;
+      margin-bottom: 20px;
+      width: 98%;
+      padding: 20 30 50 30;  
+    }
+
+    &__table-section{
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+      margin: 0 auto;
+      margin-bottom: 60px;
+      width: 98%;
+      padding: 20 30 50 30;  
+    }
+
+    &__logo{
+      font-weight: 600;
+      font-size: 28px;
+      padding-bottom: 5;
+      margin-bottom: 10;
+      border-bottom: solid;
+      border-bottom-color: #007bff;
+    }
+
+    &__flash{
+      margin: 0 auto;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  }
+}
