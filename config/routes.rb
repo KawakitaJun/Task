@@ -17,10 +17,11 @@ Rails.application.routes.draw do
   resources :taskdetails, only: [:index, :create, :edit, :update]
   devise_for :users, :controllers => {
     :sessions => 'users/sessions',
-    :registration => 'users/registrations'
+    :registrations => 'users/registrations'
   }
   devise_scope :user do
     get 'users' => 'devise/registrations#new', as: :new_user_registration_reload
+    get 'users/edit' => 'devise/registrations#edit', as: :edit_user_registration_reload
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

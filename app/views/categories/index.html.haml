@@ -1,63 +1,53 @@
-= render "shared/content_header"
-
-.section-header
-  %h3 カテゴリー登録
-  .section-header-breadcrumb
-    .breadcrumb-item
-      %a{ href: tasks_path }タスク管理
-    .breadcrumb-item.active
-      %a カテゴリー登録
-    .breadcrumb-item
-      %a{ href: edit_user_registration_path}アカウント設定
-
-.card
-  %h4 依頼元
-  -unless @clients.nil?
-    = form_for(@clients, url: clients_path, method: 'delete') do |f|
-      = f.collection_select :id, current_user.clients.all, :id, :name, {}, class: 'form-control col-2'
-      = f.submit '削除', data: { confirm: '削除しますか?' }, class: 'btn btn-outline-primary btn-sm py-1'
-
-  = form_for(@new_client, url:  clients_path) do |f|
-    - if @new_client.errors.any?
-      #error_explanation
-        %h2
-          = pluralize(@new_client.errors.count, "error")
-          prohibited this user from being saved:
-
-      %ul
-        - @new_client.errors.full_messages.each do |message|
-          %li 
-            = message
-
-    .field#newcategory
-      = f.hidden_field :user_id, value: current_user.id
-      = f.text_field :name, class: 'form-control col-2'
-      = f.submit '作成', class: 'btn btn-outline-primary btn-sm py-1'
-
-.card
-  %h4 カテゴリー
-  -unless @categories.nil?
-    = form_for(@categories, url: categories_path, method: 'delete') do |f|
-      = f.collection_select :id, current_user.categories.all, :id, :name, {}, class: 'form-control col-2'
-      = f.submit '削除', data: { confirm: '削除しますか?' }, class: 'btn btn-outline-primary btn-sm py-1'
-
-  = form_for(@new_category) do |f|
-    - if @new_category.errors.any?
-      #error_explanation
-        %h2
-          = pluralize(@new_category.errors.count, "error")
-          prohibited this user from being saved:
-
-      %ul
-        - @new_category.errors.full_messages.each do |message|
-          %li 
-            = message
-
-    .field#newcategory
-      = f.hidden_field :user_id, value: current_user.id
-      = f.text_field :name, class: 'form-control col-2'
-      = f.submit '作成', class: 'btn btn-outline-primary btn-sm py-1'
-
-%section.flash-area
-  -flash. each do |key, value|
-    = content_tag(:div, value, class: "#key")
+.category
+  = render "shared/content_header"
+  .category__main.display-flex.box-center
+    .category__main__category-section
+      .category__main__logo
+        カテゴリー
+      .category__main__form
+        - unless @categories.nil?
+          = form_for(@categories, url: categories_path, method: 'delete') do |f|
+            .category-form
+              .category-form-detail
+                登録済みカテゴリー
+              .category-input
+                = f.collection_select :id, current_user.categories.all, :id, :name, {}, class: 'search-select-input width187px'
+                = f.submit '削除', data: { confirm: '削除しますか?' }, class: 'mini-blue-white-btn'
+        = form_for(@new_category) do |f|
+          .category-form
+            .category-form-detail
+              新規作成フォーム
+            .category-input
+              = f.hidden_field :user_id, value: current_user.id
+              = f.text_field :name, placeholder: '> name', class: 'search-input'
+              = f.submit '作成', class: 'mini-blue-white-btn'
+      .category__main__flash
+        %section.flash-area
+          - if flash[:success] || flash[:error]
+            -flash. each do |key, value|
+              = content_tag(:div, value, class: "#key")
+    .category__main__client-section
+      .category__main__logo
+        依頼元
+      .category__main__form
+        - unless @clients.nil?
+          = form_for(@clients, url: clients_path, method: 'delete') do |f|
+            .category-form
+              .category-form-detail
+                登録済みカテゴリー
+              .category-input
+                = f.collection_select :id, current_user.clients.all, :id, :name, {}, class: 'search-select-input width187px'
+                = f.submit '削除', data: { confirm: '削除しますか?' }, class: 'mini-blue-white-btn'
+        = form_for(@new_client, url:  clients_path) do |f|
+          .category-form
+            .category-form-detail
+              新規作成フォーム
+            .category-input
+              = f.hidden_field :user_id, value: current_user.id
+              = f.text_field :name, placeholder: '> name', class: 'search-input'
+              = f.submit '作成', class: 'mini-blue-white-btn'
+      .category__main__flash
+        %section.flash-area
+          - if flash[:clientsuccess] || flash[:clienterror]
+            -flash. each do |key, value|
+              = content_tag(:div, value, class: "#key")

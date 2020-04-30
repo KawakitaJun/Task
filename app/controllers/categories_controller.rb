@@ -20,9 +20,9 @@ class CategoriesController < ApplicationController
   def clientcreate
     @client = Client.new(client_params)
     if @client.save
-      flash = {success: '依頼元が作成されました。'}
+      flash = {clientsuccess: '依頼元が作成されました。'}
     else
-      flash = {error: '作成に失敗しました。'}
+      flash = {clienterror: '作成に失敗しました。'}
     end
     redirect_to request.referer, flash: flash
   end 
@@ -40,9 +40,9 @@ class CategoriesController < ApplicationController
   def clientdestroy
     client = Client.find_by(client_params)
     if client.destroy
-      flash = {success: '依頼元が削除されました。'}
+      flash = {clientsuccess: '依頼元が削除されました。'}
     else
-      flash = {error: '削除に失敗しました。'}
+      flash = {clienterror: '削除に失敗しました。'}
     end
     redirect_to request.referer, flash: flash
   end

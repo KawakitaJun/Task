@@ -1,38 +1,56 @@
 - if current_user.authority?
   = search_form_for @current_department_q do |f| 
+    .search-form.display-flex
+      .serach-items
+        .search-item
+          = f.label :name, "タスク名：", {class: 'form-content margin-top-10'}
+        .search-item
+          = f.search_field :name_cont, class: 'search-input'
+      .serach-items
+        .search-item
+          = f.label :category_id, "カテゴリー：", {class: 'form-content margin-top-10'}
+        .search-item
+          = f.collection_select :category_id_eq, Category.joins(user: :department).where(departments: {id: @current_department}).all, :id, :name, {include_blank: true}, class: "search-select-input"
+      .serach-items
+        .search-item
+          = f.label :client_id,  "依頼元：", {class: 'form-content margin-top-10'}
+        .search-item
+          = f.collection_select :client_id_eq, Client.joins(user: :department).where(departments: {id: @current_department}).all, :id, :name, {include_blank: true}, class: 'search-select-input'
+      .serach-items
+        .search-item
+          = f.label :duedate, "期限：", {class: 'form-content margin-top-10'}
+        .search-item
+          = f.date_field :duedate_gteq, class: 'search-select-input'
+          = "〜　"
+          = f.date_field :duedate_lteq, class: 'search-select-input'
 
-    = f.label :name, "タスク名：", {class: 'search-label'}
-    = f.search_field :name_cont, class: 'search-input'
-
-    = f.label :category_id, "カテゴリー：", {class: 'search-label'}
-    = f.collection_select :category_id_eq, Category.joins(user: :department).where(departments: {id: @current_department}).all, :id, :name, {include_blank: true}, class: "search-select-input"
-
-    = f.label :client_id,  "依頼元：", {class: 'search-label'}
-    = f.collection_select :client_id_eq, Client.joins(user: :department).where(departments: {id: @current_department}).all, :id, :name, {include_blank: true}, class: 'search-select-input'
-
-    = f.label :duedate, "期限：", {class: 'search-label'}
-    = f.date_field :duedate_gteq, class: 'search-select-input'
-    = "〜"
-    = f.date_field :duedate_lteq, class: 'search-select-input'
-
-    = f.submit "検索", class: 'mini-blue-white-btn', id: ''
-    = link_to 'リセット', request.path, class: 'mini-gray-white-btn', id: 'font-size12'
+          = f.submit "検索", class: 'mini-blue-white-btn', id: ''
+          = link_to 'リセット', request.path, class: 'mini-gray-white-btn', id: 'font-size12'
 - else
   = search_form_for @q do |f|
+    .search-form.display-flex
+      .serach-items
+        .search-item
+          = f.label :name, "タスク名：", {class: 'form-content margin-top-10'}
+        .search-item
+          = f.search_field :name_cont, class: 'search-input'
+      .serach-items
+        .search-item
+          = f.label :category_id, "カテゴリー：", {class: 'form-content margin-top-10'}
+        .search-item
+          = f.collection_select :category_id_eq, Category.joins(user: :department).where(departments: {id: @current_department}).all, :id, :name, {include_blank: true}, class: "search-select-input"
+      .serach-items
+        .search-item
+          = f.label :client_id,  "依頼元：", {class: 'form-content margin-top-10'}
+        .search-item
+          = f.collection_select :client_id_eq, Client.joins(user: :department).where(departments: {id: @current_department}).all, :id, :name, {include_blank: true}, class: 'search-select-input'
+      .serach-items
+        .search-item
+          = f.label :duedate, "期限：", {class: 'form-content margin-top-10'}
+        .search-item
+          = f.date_field :duedate_gteq, class: 'search-select-input'
+          = "〜"
+          = f.date_field :duedate_lteq, class: 'search-select-input'
 
-    = f.label :name, "タスク名：", {class: 'search-label'}
-    = f.search_field :name_cont, class: 'search-input'
-
-    = f.label :category_id, "カテゴリー：", {class: 'search-label'}
-    = f.collection_select :category_id_eq, Category.joins(user: :department).where(departments: {id: @current_department}).all, :id, :name, {include_blank: true}, class: "search-select-input"
-
-    = f.label :client_id,  "依頼元：", {class: 'search-label'}
-    = f.collection_select :client_id_eq, Client.joins(user: :department).where(departments: {id: @current_department}).all, :id, :name, {include_blank: true}, class: 'search-select-input'
-
-    = f.label :duedate, "期限：", {class: 'search-label'}
-    = f.date_field :duedate_gteq, class: 'search-select-input'
-    = "〜"
-    = f.date_field :duedate_lteq, class: 'search-select-input'
-
-    = f.submit "検索", class: 'mini-blue-white-btn', id: ''
-    = link_to 'リセット', request.path, class: 'mini-gray-white-btn', id: 'font-size12'
+          = f.submit "検索", class: 'mini-blue-white-btn', id: ''
+          = link_to 'リセット', request.path, class: 'mini-gray-white-btn', id: 'font-size12'
