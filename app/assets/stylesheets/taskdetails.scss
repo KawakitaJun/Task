@@ -1,6 +1,40 @@
-// Place all the styles related to the Taskdetails controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-.taskdetails {
-  display: flex;
+.taskdetail {
+  color: #007bff;
+  
+  &__main{
+    width: 800px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+    margin: 0 auto;
+    margin-bottom: 30px;
+    padding: 30px 50px;
+
+    &__form{
+      width: 90%;
+      font-size: 16px;
+      margin: 0 auto;
+
+      &__top__authority{
+        p{
+          line-height: 28px;
+          margin: 0;
+        }
+      }
+    }
+
+    &__logo{
+      font-weight: 600;
+      font-size: 28px;
+      padding-bottom: 5;
+      margin-bottom: 10;
+      border-bottom: solid;
+      border-bottom-color: #007bff;
+    }
+
+    &__flash{
+      margin: 0 auto;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  }
 }

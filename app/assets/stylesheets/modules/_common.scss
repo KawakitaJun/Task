@@ -118,9 +118,14 @@ a, a:visited, a:focus, a:hover {
   margin-right: auto;
 }
 
-/* プロックの中央寄せ */
+/*  */
 .display-flex{
   display: flex;
+}
+
+/*  */
+.display-block{
+  display: block;
 }
 
 
@@ -279,6 +284,34 @@ a, a:visited, a:focus, a:hover {
   font-size: 12px;
 }
 
+.middle-blue-white-btn{
+  @include btn-set(100px, 40px);
+  display: inline-block;
+  color: #007bff;
+  background-color: #fff;
+  font-size: 14px;
+  border: 1px solid #007bff;
+
+  &:hover{
+    background-color: #007bff;
+    color: white;
+  }
+}
+
+.middle-gray-white-btn{
+  @include btn-set(100px, 40px);
+  display: inline-block;
+  color: gray;
+  background-color: #fff;
+  font-size: 14px;
+  border: 1px solid gray;
+
+  &:hover{
+    background-color: gray;
+    color: white;
+  }
+}
+
 .mini-blue-white-btn{
   @include btn-set(60px, 29px);
   display: inline-block;
@@ -371,9 +404,24 @@ a, a:visited, a:focus, a:hover {
   margin-top: 60px;
 }
 
-/* 上60px設定 */
+/* 上40px設定 */
 .margin-top-40{
   margin-top: 40px;
+}
+
+/* 上20px設定 */
+.margin-top-20{
+  margin-top: 20px;
+}
+
+/* 上15px設定 */
+.margin-top-15{
+  margin-top: 15px;
+}
+
+/* 上10px設定 */
+.margin-top-10{
+  margin-top: 10px;
 }
 
 /* 右10px設定 */
@@ -403,6 +451,10 @@ a, a:visited, a:focus, a:hover {
   border-top: 1px solid #ccc;
 }
 
+.border-gray{
+  border-color: gray;
+}
+
 /////////////////////////
 /*****フォントサイズ*****/
 /////////////////////////
@@ -416,9 +468,17 @@ a, a:visited, a:focus, a:hover {
   font-size: 12px;
 }
 
+.lineheight28{
+  line-height: 28px;
+}
+
 /////////////////////////
 /****幅****/
 /////////////////////////
+.width187px{
+  width: 187px;
+}
+
 .width98{
   width: 98%;
 }
@@ -466,50 +526,3 @@ a, a:visited, a:focus, a:hover {
 .width2{
   width: 2%;
 }
-
-/////////////////////////
-/*****セレクトボックス*****/
-/////////////////////////
-.table-select-input2 {
-	width: 90%;
-	margin: 0 auto;
-	text-align: center;
-}
-.table-select-input2 select {
-	width: 100%;
-	padding-right: 1em;
-	cursor: pointer;
-	text-indent: 0.01px;
-	text-overflow: ellipsis;
-	border: none;
-	outline: none;
-	background: transparent;
-	background-image: none;
-	box-shadow: none;
-	-webkit-appearance: none;
-  appearance: none;
-}
-.table-select-input2 select::-ms-expand {
-    display: none;
-}
-.table-select-input2.table-select {
-	position: relative;
-	background: white;
-}
-.table-select-input2.table-select::before {
-	position: absolute;
-	top: 0.5em;
-	right: 0.5em;
-	width: 0;
-	height: 0;
-	padding: 0;
-	content: '';
-	border-left: 6px solid transparent;
-	border-right: 6px solid transparent;
-	border-top: 6px solid #007bff;
-	pointer-events: none;
-}
-.table-select-input2.table-select select {
-	color: #007bff;
-}
-

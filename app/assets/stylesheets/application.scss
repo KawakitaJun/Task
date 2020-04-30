@@ -15,9 +15,6 @@
  //reset
 @import "reset";
 
- //old
-@import "x/old_common";
-
  // gem
 @import "bootstrap";
 @import "font-awesome-sprockets";
@@ -41,7 +38,10 @@
 
 @import "login_logout_signup/login";
 @import "login_logout_signup/signup";
+@import "login_logout_signup/edit_user";
 
 @import "departments";
 @import "account_managements";
 @import "tasks";
+@import "taskdetails";
+@import "categories";
