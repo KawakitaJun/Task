@@ -12,7 +12,7 @@
                 登録済みカテゴリー
               .category-input
                 = f.collection_select :id, current_user.categories.all, :id, :name, {}, class: 'search-select-input width187px'
-                = f.submit '削除', data: { confirm: '削除しますか?' }, class: 'mini-blue-white-btn'
+                = f.submit '削除', data: { confirm: '削除しますか?（このカテゴリーで登録されているタスクも削除されます。）' }, class: 'mini-blue-white-btn'
         = form_for(@new_category) do |f|
           .category-form
             .category-form-detail
@@ -37,7 +37,7 @@
                 登録済みカテゴリー
               .category-input
                 = f.collection_select :id, current_user.clients.all, :id, :name, {}, class: 'search-select-input width187px'
-                = f.submit '削除', data: { confirm: '削除しますか?' }, class: 'mini-blue-white-btn'
+                = f.submit '削除', data: { confirm: '削除しますか?（この依頼元で登録されているタスクも削除されます。）' }, class: 'mini-blue-white-btn'
         = form_for(@new_client, url:  clients_path) do |f|
           .category-form
             .category-form-detail
